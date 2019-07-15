@@ -251,7 +251,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "may be like you\n\n\u6797\u4FCA\u6770 \u4E0D\u6B7B\u4E4B\u8EAB"
+  m_Text: "may be like you\n\u3042\u3044\u3046\u3048\u304A\n\u6797\u4FCA\u6770 \u4E0D\u6B7B\u4E4B\u8EAB"
 --- !u!222 &295322333
 CanvasRenderer:
   m_ObjectHideFlags: 0
