@@ -20,12 +20,6 @@ public class CardManager : MonoBehaviour
     public Text counterPointText;
     public Text damageText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        init();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +27,7 @@ public class CardManager : MonoBehaviour
     }
 
     //卡面载入
-    private void init()
+    public void init()
     {
         attackImage.sprite = attackCard.attackSprite;
         attackBallImage.sprite = attackCard.attackBallSprite;

@@ -15,6 +15,8 @@ public class CardCurved : MonoBehaviour
     public CounterCard[] counterCards; //反击牌
 
     public GameObject NextCard; //下一张手牌
+    public int AcardNo;  //下一张手牌的进攻
+    public int CcardNo;  //下一张手牌的反击
 
     public List<GameObject> ListHandCard = new List<GameObject>(); //手牌列表 
     public GameObject TransBeginHandCard;  //生成手牌最开始的位置
@@ -37,7 +39,6 @@ public class CardCurved : MonoBehaviour
             //YGO测试
             //YGOHandGeneration();
 
-            RandomGeneration();
             GetCards();
             AddCardAnimations();
         }
@@ -56,6 +57,12 @@ public class CardCurved : MonoBehaviour
         GameObject GOHandCard = Instantiate(NextCard) as GameObject;
         GOHandCard.transform.position = TransBeginHandCard.transform.position;
         GOHandCard.transform.parent = transform;
+
+        //为手牌随机赋值并初始化
+        RandomGeneration();
+        GOHandCard.GetComponent<CardManager>().attackCard = new AttackCard(attackCards[AcardNo]);
+        GOHandCard.GetComponent<CardManager>().counterCard =new CounterCard( counterCards[CcardNo]);
+        GOHandCard.GetComponent<CardManager>().init();
 
         //将新手牌添加到手牌列表
         ListHandCard.Add(GOHandCard);
@@ -114,21 +121,46 @@ public class CardCurved : MonoBehaviour
         _FloRotateAngel = 55F / ListHandCard.Count / ListHandCard.Count;
     }
 
-    //public void YGOHandGeneration()
-    //{
-    //    //测试用，随机生成一张游戏王手牌
-    //    int r = Random.Range(0, YGO_Card.Length);
-    //    //Debug.Log(r);
-    //    NextCard = YGO_Card[r];
-    //}
-
     //随机生成一张牌
     public void RandomGeneration()
     {
-        int r1= Random.Range(0, attackCards.Length);
-        int r2 = Random.Range(0, counterCards.Length);
-        NextCard.GetComponent<CardManager>().attackCard = new AttackCard(attackCards[r1]);
-        NextCard.GetComponent<CardManager>().counterCard = new CounterCard(counterCards[r2]);
+        AcardNo = Random.Range(0, attackCards.Length);
+        CcardNo = Random.Range(0, counterCards.Length);
     }
 
+    //改变卡的攻击面
+    public void attackAssignment(GameObject card1, AttackCard card2)
+    {
+        card1.GetComponent<CardManager>().attackCard.attackCardNo = card2.attackCardNo;
+        card1.GetComponent<CardManager>().attackCard.CardName = card2.CardName;
+        card1.GetComponent<CardManager>().attackCard.CardIntroduction = card2.CardIntroduction;
+        card1.GetComponent<CardManager>().attackCard.CardEffect = card2.CardEffect;
+        card1.GetComponent<CardManager>().attackCard.counterAttribute = card2.counterAttribute;
+        card1.GetComponent<CardManager>().attackCard.ActionPoint = card2.ActionPoint;
+        card1.GetComponent<CardManager>().attackCard.damageAttribute = card2.damageAttribute;
+        card1.GetComponent<CardManager>().attackCard.Damage = card2.Damage;
+        card1.GetComponent<CardManager>().attackCard.attackSprite = card2.attackSprite;
+        card1.GetComponent<CardManager>().attackCard.attackBallSprite = card2.attackBallSprite;
+        card1.GetComponent<CardManager>().attackCard.damageCubeSprite = card2.damageCubeSprite;
+    }
+
+    //改变卡的反击面
+    public void counterAssignment(GameObject card1, CounterCard card2)
+    {
+        card1.GetComponent<CardManager>().counterCard.counterCardNo = card2.counterCardNo;
+        card1.GetComponent<CardManager>().counterCard.CardName = card2.CardName;
+        card1.GetComponent<CardManager>().counterCard.CardIntroduction = card2.CardIntroduction;
+        card1.GetComponent<CardManager>().counterCard.CardEffect = card2.CardEffect;
+        card1.GetComponent<CardManager>().counterCard.counterAttribute = card2.counterAttribute;
+        card1.GetComponent<CardManager>().counterCard.ActionPoint = card2.ActionPoint;
+        card1.GetComponent<CardManager>().counterCard.counterSprite = card2.counterSprite;
+        card1.GetComponent<CardManager>().counterCard.counterBallSprite = card2.counterBallSprite;
+    }
+
+    //测试用，随机生成一张游戏王手牌
+    //public void YGOHandGeneration()
+    //{
+    //    int r = Random.Range(0, YGO_Card.Length);
+    //    NextCard = YGO_Card[r];
+    //}
 }
