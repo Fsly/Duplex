@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   YGO_Card:
-  - {fileID: 4848056345824733803, guid: dba4248e23fe4914896c7e9cc7b9e0ac, type: 3}
+  - {fileID: 6851385394430198716, guid: 53126e6050a246747965f0f9bec7999d, type: 3}
   - {fileID: 6136177361331494961, guid: b0a057280ab82cf478e327482eea67cd, type: 3}
   - {fileID: 6503619169390290773, guid: dfd61c445b82b5c4f98dc914e6ceca31, type: 3}
   - {fileID: 2832997428308469873, guid: 177de30d616f40e41ac663fa5458f236, type: 3}
@@ -97,8 +97,7 @@ MonoBehaviour:
   - {fileID: 5190203943345682770, guid: 6bf27c35118854f48abf50ac55980ab0, type: 3}
   - {fileID: 5935749468375685927, guid: 99f68a3abee258f4fb69ea0ebfd8809f, type: 3}
   - {fileID: 7655638687922790244, guid: 596555cbacb871f459688cbc98c0242f, type: 3}
-  GOHandCardPrefab: {fileID: 7655638687922790244, guid: 596555cbacb871f459688cbc98c0242f,
-    type: 3}
+  NextCard: {fileID: 0}
   ListHandCard: []
   TransBeginHandCard: {fileID: 6585744390291828009}
   _FloRotateAngel: 0

@@ -25,6 +25,7 @@ public class CardCurved : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //响应按键，待改
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             HandGeneration();

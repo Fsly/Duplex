@@ -19,6 +19,7 @@ public class RoundStart : MonoBehaviour
 
     void UIAnimation()
     {
+        //回合开始动画
         transform.localScale = new Vector3(2, 1, 1);
         transform.DOScale(Vector3.one, keepTime).OnComplete(() =>
         {
@@ -30,11 +31,5 @@ public class RoundStart : MonoBehaviour
                 });
             });
         });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
