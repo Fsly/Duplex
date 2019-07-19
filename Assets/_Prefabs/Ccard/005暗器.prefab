@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3652113621999926464
+--- !u!1 &1435135513445285919
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3652113621999926466}
-  - component: {fileID: 3652113621999926465}
+  - component: {fileID: 1435135513445285917}
+  - component: {fileID: 1435135513445285918}
   m_Layer: 0
-  m_Name: "\u94A2\u76FE"
+  m_Name: "005\u6697\u5668"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3652113621999926466
+--- !u!4 &1435135513445285917
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3652113621999926464}
+  m_GameObject: {fileID: 1435135513445285919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 684.9665, y: 607.36346, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,23 +31,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3652113621999926465
+--- !u!114 &1435135513445285918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3652113621999926464}
+  m_GameObject: {fileID: 1435135513445285919}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a9aded22123c3945b4cebc5d36629b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterCardNo: 1
-  CardName: "\u94A2\u76FE"
-  CardIntroduction: "\u7B28\u91CD\u7684\u76FE\uFF0C\u51FA\u4E4E\u610F\u6599\u7684\u662F\u6D88\u8017\u54C1"
-  CardEffect: "\u7269\u7406\u4F24\u5BB3\u53D8\u4E3A1"
+  counterCardNo: 5
+  CardName: "\u6697\u5668"
+  CardIntroduction: "\u6765\u5440\uFF0C\u4E92\u76F8\u4F24\u5BB3"
+  CardEffect: "\u5BF9\u5BF9\u65B9\u9020\u62101\u70B9\u7269\u7406\u4F24\u5BB3"
   counterAttribute: 0
   ActionPoint: 1
-  counterSprite: {fileID: 21300000, guid: 34b4a2c76552db241b2fd41aa1c0ad1f, type: 3}
+  counterSprite: {fileID: 21300000, guid: 430b93664b2b0054c8121a9bf66dabbe, type: 3}
   counterBallSprite: {fileID: 21300078, guid: 26c155b30bb820743842ee03cfe3cfb3, type: 3}

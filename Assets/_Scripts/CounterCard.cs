@@ -18,5 +18,17 @@ public class CounterCard : MonoBehaviour
     //UI层面
     public Sprite counterSprite;  //图片
     public Sprite counterBallSprite; //行动点球
+
+    public CounterCard(CounterCard card)
+    {
+        counterCardNo = card.counterCardNo;
+        CardName = card.CardName;
+        CardIntroduction = card.CardIntroduction;
+        CardEffect = card.CardEffect;
+        counterAttribute = card.counterAttribute;
+        ActionPoint = card.ActionPoint;
+        counterSprite = card.counterSprite;
+        counterBallSprite = card.counterBallSprite;
+    }
 }
 

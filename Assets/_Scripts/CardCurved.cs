@@ -11,7 +11,11 @@ public class CardCurved : MonoBehaviour
 
     public GameObject[] YGO_Card; //代替用牌
 
+    public AttackCard[] attackCards; //进攻牌
+    public CounterCard[] counterCards; //反击牌
+
     public GameObject NextCard; //下一张手牌
+
     public List<GameObject> ListHandCard = new List<GameObject>(); //手牌列表 
     public GameObject TransBeginHandCard;  //生成手牌最开始的位置
     public float _FloRotateAngel; //手牌动画旋转的角度
@@ -28,36 +32,39 @@ public class CardCurved : MonoBehaviour
         //响应按键，待改
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            HandGeneration();
+            //抽牌
+
+            //YGO测试
+            //YGOHandGeneration();
+
+            RandomGeneration();
             GetCards();
             AddCardAnimations();
         }
         else if (Input.GetKeyDown(KeyCode.Backspace))
         {
+            //出最后那张牌
             UseCardAnimation();
         }
     }
 
-    public void HandGeneration()
-    {
-        //随机生成一张手牌
-        int r = Random.Range(0, YGO_Card.Length);
-        //Debug.Log(r);
-        NextCard = YGO_Card[r];
-    }
+
 
     public void GetCards()
     {
-        //克隆预设
+        //克隆下一张手牌
         GameObject GOHandCard = Instantiate(NextCard) as GameObject;
         GOHandCard.transform.position = TransBeginHandCard.transform.position;
         GOHandCard.transform.parent = transform;
+
         //将新手牌添加到手牌列表
         ListHandCard.Add(GOHandCard);
+
         //计算动画需要旋转的角度
         RotateAngel();
 
     }
+
     //为手牌添加动画
     private void HandCardAnimation(GameObject GO, float Vec3_Z)
     {
@@ -100,10 +107,28 @@ public class CardCurved : MonoBehaviour
             }
         }
     }
+
     //计算需要旋转的角度
     private void RotateAngel()
     {
         _FloRotateAngel = 55F / ListHandCard.Count / ListHandCard.Count;
+    }
+
+    //public void YGOHandGeneration()
+    //{
+    //    //测试用，随机生成一张游戏王手牌
+    //    int r = Random.Range(0, YGO_Card.Length);
+    //    //Debug.Log(r);
+    //    NextCard = YGO_Card[r];
+    //}
+
+    //随机生成一张牌
+    public void RandomGeneration()
+    {
+        int r1= Random.Range(0, attackCards.Length);
+        int r2 = Random.Range(0, counterCards.Length);
+        NextCard.GetComponent<CardManager>().attackCard = new AttackCard(attackCards[r1]);
+        NextCard.GetComponent<CardManager>().counterCard = new CounterCard(counterCards[r2]);
     }
 
 }

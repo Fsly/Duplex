@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5813641475666433500
+--- !u!1 &7172890061130522442
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5813641475666433499}
-  - component: {fileID: 5813641475666433498}
+  - component: {fileID: 7172890061130522445}
+  - component: {fileID: 7172890061130522444}
   m_Layer: 0
-  m_Name: "\u9B54\u529B\u5F15\u7206"
+  m_Name: "002\u4E0A\u6311"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5813641475666433499
+--- !u!4 &7172890061130522445
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813641475666433500}
+  m_GameObject: {fileID: 7172890061130522442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 684.9665, y: 607.36346, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,26 +31,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5813641475666433498
+--- !u!114 &7172890061130522444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813641475666433500}
+  m_GameObject: {fileID: 7172890061130522442}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcd78c1c50684c44091dccc469bd0999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCardNo: 4
-  CardName: "\u9B54\u529B\u5F15\u7206"
-  CardIntroduction: "\u5EF6\u65F6\u7684\u9AD8\u989D\u4F24\u5BB3\uFF0C\u4EE4\u654C\u4EBA\u7EDD\u671B"
-  CardEffect: "\u4E0B\u4E00\u4E2A\u5BF9\u65B9\u56DE\u5408\u51C6\u5907\u9636\u6BB5\u5BF9\u5BF9\u65B9\u9020\u62102\u70B9\u9B54\u6CD5\u4F24\u5BB3"
-  counterAttribute: 1
-  ActionPoint: 2
-  damageAttribute: 1
+  attackCardNo: 2
+  CardName: "\u4E0A\u6311"
+  CardIntroduction: "\u6311\u51FB\uFF0C\u4F24\u5BB3\u654C\u4EBA\u540C\u65F6\u7834\u574F\u5BF9\u65B9\u7684\u67B6\u52BF"
+  CardEffect: "\u53D1\u52A8\u65F6\u968F\u673A\u5F03\u5BF9\u65B9\u4E00\u5F20\u624B\u724C"
+  counterAttribute: 0
+  ActionPoint: 1
+  damageAttribute: 0
   Damage: 1
-  attackSprite: {fileID: 21300000, guid: 1d6f20b5ce42c1240b5a4eb49234352f, type: 3}
-  attackBallSprite: {fileID: 21300070, guid: 26c155b30bb820743842ee03cfe3cfb3, type: 3}
-  damageCubeSprite: {fileID: 21300002, guid: 69de34e564fc0e448907d236684f2279, type: 3}
+  attackSprite: {fileID: 21300000, guid: 1dee22dacdf81a142867b6c4b71fbe40, type: 3}
+  attackBallSprite: {fileID: 21300078, guid: 26c155b30bb820743842ee03cfe3cfb3, type: 3}
+  damageCubeSprite: {fileID: 21300004, guid: 69de34e564fc0e448907d236684f2279, type: 3}

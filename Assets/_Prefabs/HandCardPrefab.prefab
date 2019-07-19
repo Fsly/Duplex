@@ -97,6 +97,18 @@ MonoBehaviour:
   - {fileID: 5190203943345682770, guid: 6bf27c35118854f48abf50ac55980ab0, type: 3}
   - {fileID: 5935749468375685927, guid: 99f68a3abee258f4fb69ea0ebfd8809f, type: 3}
   - {fileID: 7655638687922790244, guid: 596555cbacb871f459688cbc98c0242f, type: 3}
+  attackCards:
+  - {fileID: 6270887093064943878, guid: 2b8c35e55132a8b4ea07b4324ccc2a95, type: 3}
+  - {fileID: 7172890061130522444, guid: a85eab8a415a34c49b26cbeee1c00d0b, type: 3}
+  - {fileID: 5278656643589367394, guid: b4899321028a9ff418dd3a60ebed0f70, type: 3}
+  - {fileID: 5813641475666433498, guid: 12ca2294a27612443b336dc7969f4e88, type: 3}
+  - {fileID: 42586891479569199, guid: e263783a1f0cba4448dcd098b7210e72, type: 3}
+  counterCards:
+  - {fileID: 3652113621999926465, guid: f6b489cdc3ef4f540aff39dd8e103870, type: 3}
+  - {fileID: 7802408044977057157, guid: a80c76f405ec3a14190a4761ef125527, type: 3}
+  - {fileID: 2906673642125196920, guid: 9c87194e93e1006429a4ffffbbd443bd, type: 3}
+  - {fileID: 5992655200149532844, guid: 1e184e095165fb84584d0110245d8ab3, type: 3}
+  - {fileID: 1435135513445285918, guid: 7a1c15c0a5d3d414698efc01b090bafb, type: 3}
   NextCard: {fileID: 0}
   ListHandCard: []
   TransBeginHandCard: {fileID: 6585744390291828009}

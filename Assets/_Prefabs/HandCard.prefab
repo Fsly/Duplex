@@ -49,16 +49,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c29fb8eb07d4144b3afe010dc3f436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCardNo: 0
-  attackSprite: {fileID: 0}
-  attackBallSprite: {fileID: 0}
-  counterBallSprite: {fileID: 0}
-  attackPointText: {fileID: 0}
-  damageText: {fileID: 0}
-  counterCardNo: 0
-  counterSprite: {fileID: 0}
-  damageCubeSprite: {fileID: 0}
-  counterPointText: {fileID: 0}
+  counterCard: {fileID: 3652113621999926465, guid: f6b489cdc3ef4f540aff39dd8e103870,
+    type: 3}
+  attackCard: {fileID: 6270887093064943878, guid: 2b8c35e55132a8b4ea07b4324ccc2a95,
+    type: 3}
+  attackImage: {fileID: 8567736703593846474}
+  attackBallImage: {fileID: 8567736703233691132}
+  counterImage: {fileID: 8567736702727168348}
+  counterBallImage: {fileID: 8567736703985756964}
+  damageCubeImage: {fileID: 8567736702126271672}
+  attackPointText: {fileID: 8567736703713599539}
+  counterPointText: {fileID: 8567736702467911149}
+  damageText: {fileID: 8567736702832884735}
 --- !u!1 &8567736702126271670
 GameObject:
   m_ObjectHideFlags: 0
