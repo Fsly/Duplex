@@ -781,12 +781,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: -6.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6585744390291828011, guid: 8999040aca3ed52499f60f61616ad6b5,
-        type: 3}
-      propertyPath: NextCard
-      value: 
-      objectReference: {fileID: 6851385394430198716, guid: 53126e6050a246747965f0f9bec7999d,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8999040aca3ed52499f60f61616ad6b5, type: 3}
 --- !u!224 &6585744390291828008 stripped
