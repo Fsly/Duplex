@@ -61,6 +61,11 @@ MonoBehaviour:
   attackPointText: {fileID: 8567736703713599539}
   counterPointText: {fileID: 8567736702467911149}
   damageText: {fileID: 8567736702832884735}
+  IntroductionFrame: {fileID: 0}
+  IntroductionAI: {fileID: 0}
+  IntroductionCI: {fileID: 0}
+  IntroductionAT: {fileID: 0}
+  IntroductionCT: {fileID: 0}
 --- !u!1 &8567736702126271670
 GameObject:
   m_ObjectHideFlags: 0
