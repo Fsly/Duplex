@@ -16,6 +16,7 @@ public class AttackCard : MonoBehaviour
     public int ActionPoint;//行动点
     public Attribute damageAttribute;//伤害为物理or魔法
     public int Damage; //伤害
+    public bool canCounter = true; //可被反击
 
     //UI层面
     public Sprite attackSprite; //图片

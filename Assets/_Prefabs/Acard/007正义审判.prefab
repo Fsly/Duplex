@@ -51,6 +51,7 @@ MonoBehaviour:
   ActionPoint: 2
   damageAttribute: 0
   Damage: 2
+  canCounter: 1
   attackSprite: {fileID: 21300000, guid: 7661dc21bb31a7046a3e5e17d68d6fdb, type: 3}
   attackBallSprite: {fileID: 21300078, guid: 26c155b30bb820743842ee03cfe3cfb3, type: 3}
   damageCubeSprite: {fileID: 21300004, guid: 69de34e564fc0e448907d236684f2279, type: 3}
