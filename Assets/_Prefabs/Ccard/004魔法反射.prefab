@@ -46,7 +46,7 @@ MonoBehaviour:
   counterCardNo: 4
   CardName: "\u9B54\u6CD5\u53CD\u5C04"
   CardIntroduction: "\u4F60\u7684\u653B\u51FB\uFF0C\u539F\u5C01\u4E0D\u52A8\u8FD8\u7ED9\u4F60\uFF01"
-  CardEffect: "50%\u5C06\u4F24\u5BB3\u53D8\u4E3A0"
+  CardEffect: "\u5BF9\u5BF9\u65B9\u9020\u6210\u4E0E\u53D7\u5230\u9B54\u6CD5\u4F24\u5BB3\u7B49\u503C\u9B54\u6CD5\u4F24\u5BB3\uFF0C\u4E4B\u540E\u6211\u65B9\u53D7\u5230\u7684\u9B54\u6CD5\u4F24\u5BB3\u53D8\u4E3A0"
   counterAttribute: 1
   ActionPoint: 2
   counterSprite: {fileID: 21300000, guid: f12747638f7a712478e1e084fdde1481, type: 3}

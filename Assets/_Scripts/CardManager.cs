@@ -26,12 +26,7 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Text damageText;
 
     //公共介绍框UI
-    public Transform IntroductionFrame;
-    public Image IntroductionAI;
-    public Image IntroductionCI;
-    public Text IntroductionAT;
-    public Text IntroductionCT;
-    public Vector3 IntroductionInit;
+    public IntroductionManager introductionManager;
 
     //点击事件
     public HandCardButton cardButton;//产生何种按钮，不影响功能
@@ -41,13 +36,14 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     //手牌功能
     public int handCardNo;//手牌号
 
+    //出牌类
+    public ShowingCard showingCard;
 
     // Update is called once per frame
     void Update()
     {
 
     }
-
 
     //卡面载入，介绍框获取
     public void init()
@@ -64,31 +60,27 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         counterPointText.text = counterCard.ActionPoint + "";
 
         //介绍框获取
-        IntroductionFrame = GameObject.Find("Introduction").GetComponent<Transform>();
-        IntroductionInit = GameObject.Find("IntroductionInit").GetComponent<Transform>().position;
-        IntroductionAI = GameObject.Find("AImage").GetComponent<Image>();
-        IntroductionCI = GameObject.Find("CImage").GetComponent<Image>();
-        IntroductionAT = GameObject.Find("AText").GetComponent<Text>();
-        IntroductionCT = GameObject.Find("CText").GetComponent<Text>();
+        introductionManager = GameObject.Find("Introduction").GetComponent<IntroductionManager>();
+        showingCard = GameObject.Find("ShowCardParent").GetComponent<ShowingCard>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         //鼠标进入显示卡名
-        IntroductionFrame.DOMove(IntroductionInit + new Vector3(-420, 0, 0), 0.5f);
-        IntroductionAI.sprite = attackCard.attackSprite;
-        IntroductionCI.sprite = counterCard.counterSprite;
-        IntroductionAT.text = "卡名：" + attackCard.CardName + " " + attackCard.ActionPoint + "/" + attackCard.Damage
-            + "\n效果：" + attackCard.CardEffect + "\n介绍：" + attackCard.CardIntroduction;
-        IntroductionCT.text = "卡名：" + counterCard.CardName + " " + counterCard.ActionPoint
-            + "\n效果：" + counterCard.CardEffect + "\n介绍：" + counterCard.CardIntroduction;
+        if (introductionManager.handCardNo != handCardNo)
+        {
+            introductionManager.attackCard = new AttackCard(attackCard);
+            introductionManager.counterCard = new CounterCard(counterCard);
+            introductionManager.UpdateForDisplay();
+        }
+        introductionManager.DisplayIntroduction();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         //鼠标离开范围
         if (eventData.IsPointerMoving())
-            IntroductionFrame.DOMove(IntroductionInit, 0.5f);
+            introductionManager.HiddenIntroduction();
     }
 
     public void ButtonInstantiate()
@@ -111,6 +103,7 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void UseCard()
     {
         //使用卡牌
+
         //开启协程
         StartCoroutine(InstantiateShowCard());
 
@@ -121,11 +114,15 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     IEnumerator InstantiateShowCard()
     {
         //出牌协程
-        GameObject showCard = Instantiate(gameObject) as GameObject;
-        Transform showParent = GameObject.Find("ShowCardParent").GetComponent<Transform>();
-        showCard.GetComponent<CardManager>().cardButton = HandCardButton.Cannot;
-        showCard.transform.position = showParent.position;
-        showCard.transform.parent = showParent;
+        showingCard.attackCard = new AttackCard(attackCard);
+        showingCard.counterCard = new CounterCard(counterCard);
+        showingCard.CardShowAnimation();
+
+        //GameObject showCard = Instantiate(gameObject) as GameObject;
+        //Transform showParent = GameObject.Find("ShowCardParent").GetComponent<Transform>();
+        //showCard.GetComponent<CardManager>().cardButton = HandCardButton.Cannot;
+        //showCard.transform.position = showParent.position;
+        //showCard.transform.parent = showParent;
         yield return null;
     }
 }
