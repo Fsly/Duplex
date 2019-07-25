@@ -3,35 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    //手牌实例：手牌点击功能实现，手牌属性
+    //手牌实例：手牌点击功能实现，手牌属性及显示
 
+    //卡牌信息存储
     public CounterCard counterCard;
     public AttackCard attackCard;
 
+    //图片UI
     public Image attackImage;
     public Image attackBallImage;
     public Image counterImage;
     public Image counterBallImage;
     public Image damageCubeImage;
 
+    //行动点和伤害UI
     public Text attackPointText;
     public Text counterPointText;
     public Text damageText;
 
-    //卡面介绍
-    public GameObject IntroductionFrame;
+    //公共介绍框UI
+    public Transform IntroductionFrame;
     public Image IntroductionAI;
     public Image IntroductionCI;
     public Text IntroductionAT;
     public Text IntroductionCT;
+    public Vector3 IntroductionInit;
+
+    //点击事件
+    public HandCardButton cardButton;//产生何种按钮，不影响功能
+    public GameObject attackButton;
+    public GameObject counterButton;
+
+    //手牌功能
+    public int handCardNo;//手牌号
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -50,7 +64,8 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         counterPointText.text = counterCard.ActionPoint + "";
 
         //介绍框获取
-        IntroductionFrame = GameObject.Find("Introduction");
+        IntroductionFrame = GameObject.Find("Introduction").GetComponent<Transform>();
+        IntroductionInit = GameObject.Find("IntroductionInit").GetComponent<Transform>().position;
         IntroductionAI = GameObject.Find("AImage").GetComponent<Image>();
         IntroductionCI = GameObject.Find("CImage").GetComponent<Image>();
         IntroductionAT = GameObject.Find("AText").GetComponent<Text>();
@@ -59,17 +74,68 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        IntroductionFrame.SetActive(true);
+        //鼠标进入显示卡名
+        IntroductionFrame.DOMove(IntroductionInit + new Vector3(-420, 0, 0), 0.5f);
         IntroductionAI.sprite = attackCard.attackSprite;
         IntroductionCI.sprite = counterCard.counterSprite;
-        IntroductionAT.text = "卡名：" + attackCard.CardName 
+        IntroductionAT.text = "卡名：" + attackCard.CardName + " " + attackCard.ActionPoint + "/" + attackCard.Damage
             + "\n效果：" + attackCard.CardEffect + "\n介绍：" + attackCard.CardIntroduction;
-        IntroductionCT.text = "卡名：" + counterCard.CardName
+        IntroductionCT.text = "卡名：" + counterCard.CardName + " " + counterCard.ActionPoint
             + "\n效果：" + counterCard.CardEffect + "\n介绍：" + counterCard.CardIntroduction;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        IntroductionFrame.SetActive(false);
+        //鼠标离开范围
+        if (eventData.IsPointerMoving())
+            IntroductionFrame.DOMove(IntroductionInit, 0.5f);
     }
+
+    public void ButtonInstantiate()
+    {
+        //点击卡牌根据情况生成按钮
+        GameObject GOCardButton = null;
+        if (cardButton == HandCardButton.Attack)
+        {
+            GOCardButton = Instantiate(attackButton) as GameObject;
+        }
+        else if (cardButton == HandCardButton.Counter)
+        {
+            GOCardButton = Instantiate(counterButton) as GameObject;
+        }
+        GOCardButton.transform.position = Input.mousePosition;
+        GOCardButton.transform.parent = transform;
+        GOCardButton.GetComponent<ActionButton>().cardManager = this;
+    }
+
+    public void UseCard()
+    {
+        //使用卡牌
+        //开启协程
+        StartCoroutine(InstantiateShowCard());
+
+        //删除卡牌
+        GameObject.Find("HandCardPrefab").GetComponent<CardCurved>().DestroyTheCard(handCardNo);
+    }
+
+    IEnumerator InstantiateShowCard()
+    {
+        //出牌协程
+        GameObject showCard = Instantiate(gameObject) as GameObject;
+        Transform showParent = GameObject.Find("ShowCardParent").GetComponent<Transform>();
+        showCard.GetComponent<CardManager>().cardButton = HandCardButton.Cannot;
+        showCard.transform.position = showParent.position;
+        showCard.transform.parent = showParent;
+        yield return null;
+    }
+}
+
+
+
+
+public enum HandCardButton
+{
+    Attack,
+    Counter,
+    Cannot
 }

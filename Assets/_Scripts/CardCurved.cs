@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class CardCurved : MonoBehaviour
 {
+    //手牌管理
     //实现手牌区域的曲面化以及DOTween实现旋转
     //手牌储存，抽牌
 
@@ -15,6 +16,7 @@ public class CardCurved : MonoBehaviour
     public CounterCard[] counterCards; //反击牌
 
     public GameObject NextCard; //下一张手牌
+    public int NextCardNo;//下一张手牌的手牌号
     public int AcardNo;  //下一张手牌的进攻
     public int CcardNo;  //下一张手牌的反击
 
@@ -25,7 +27,7 @@ public class CardCurved : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        NextCardNo = 0;
     }
 
     // Update is called once per frame
@@ -36,8 +38,7 @@ public class CardCurved : MonoBehaviour
         {
             //抽牌
 
-            //YGO测试
-            //YGOHandGeneration();
+            //YGO测试 YGOHandGeneration();
 
             GetCards();
             AddCardAnimations();
@@ -45,6 +46,7 @@ public class CardCurved : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Backspace))
         {
             //出最后那张牌
+            DestroyLastCard();
             UseCardAnimation();
         }
     }
@@ -61,8 +63,12 @@ public class CardCurved : MonoBehaviour
         //为手牌随机赋值并初始化
         RandomGeneration();
         GOHandCard.GetComponent<CardManager>().attackCard = new AttackCard(attackCards[AcardNo]);
-        GOHandCard.GetComponent<CardManager>().counterCard =new CounterCard( counterCards[CcardNo]);
+        GOHandCard.GetComponent<CardManager>().counterCard = new CounterCard(counterCards[CcardNo]);
         GOHandCard.GetComponent<CardManager>().init();
+
+        //为此牌编号
+        GOHandCard.GetComponent<CardManager>().handCardNo = NextCardNo;
+        NextCardNo++;
 
         //将新手牌添加到手牌列表
         ListHandCard.Add(GOHandCard);
@@ -98,9 +104,6 @@ public class CardCurved : MonoBehaviour
     //使用手牌时播放的动画
     private void UseCardAnimation()
     {
-        Destroy(ListHandCard[0]);
-        ListHandCard.Remove(ListHandCard[0]);
-        RotateAngel();
         if (ListHandCard.Count == 1)
         {
             HandCardAnimation(ListHandCard[0], 0);
@@ -113,6 +116,18 @@ public class CardCurved : MonoBehaviour
                 HandCardAnimation(ListHandCard[ListHandCard.Count - 1], -27.5F + _FloRotateAngel);
             }
         }
+    }
+
+    //删除最后那张牌
+    public void DestroyLastCard()
+    {
+        Destroy(ListHandCard[0]);
+
+        //将删除的手牌从列表移除
+        ListHandCard.Remove(ListHandCard[0]);
+
+        //计算动画需要旋转的角度
+        RotateAngel();
     }
 
     //计算需要旋转的角度
@@ -155,6 +170,29 @@ public class CardCurved : MonoBehaviour
         card1.GetComponent<CardManager>().counterCard.ActionPoint = card2.ActionPoint;
         card1.GetComponent<CardManager>().counterCard.counterSprite = card2.counterSprite;
         card1.GetComponent<CardManager>().counterCard.counterBallSprite = card2.counterBallSprite;
+    }
+
+    public void DestroyTheCard(int DesCardNo)
+    {
+
+        for (int i = 0; i < ListHandCard.Count; i++)
+        {
+            if (ListHandCard[i].GetComponent<CardManager>().handCardNo == DesCardNo)
+            {
+                Destroy(ListHandCard[i]);
+
+                //将删除的手牌从列表移除
+                ListHandCard.Remove(ListHandCard[i]);
+
+                //计算动画需要旋转的角度
+                RotateAngel();
+
+                //使用手牌时播放的动画
+                UseCardAnimation();
+
+                return;
+            }
+        }
     }
 
     //测试用，随机生成一张游戏王手牌

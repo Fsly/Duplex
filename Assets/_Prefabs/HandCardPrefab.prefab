@@ -107,6 +107,7 @@ MonoBehaviour:
   - {fileID: 1497856581574685606, guid: 1777bdcba7501b54e84799bd2cc9aafa, type: 3}
   - {fileID: 712087414938075174, guid: 6597959a98ef5e84b9a70d53418ff87b, type: 3}
   - {fileID: 7930018215755403846, guid: 53a1a2eb5e2160846b20c04fcbf7d72f, type: 3}
+  - {fileID: 8065235571224226036, guid: 9c3435870d36c1c41b2969a5be5029c1, type: 3}
   counterCards:
   - {fileID: 3652113621999926465, guid: f6b489cdc3ef4f540aff39dd8e103870, type: 3}
   - {fileID: 7802408044977057157, guid: a80c76f405ec3a14190a4761ef125527, type: 3}
@@ -115,8 +116,10 @@ MonoBehaviour:
   - {fileID: 1435135513445285918, guid: 7a1c15c0a5d3d414698efc01b090bafb, type: 3}
   - {fileID: 2598180889588513456, guid: ecdc7066ec8890346affb2da539b99b3, type: 3}
   - {fileID: 2627403763470668453, guid: 8fedd41a5a65ede4d82aa2b7765df8c5, type: 3}
+  - {fileID: 5535201512074200832, guid: 34d6aead6331a3b4781ef492dc7407f5, type: 3}
   NextCard: {fileID: 6851385394430198716, guid: 53126e6050a246747965f0f9bec7999d,
     type: 3}
+  NextCardNo: 0
   AcardNo: 0
   CcardNo: 0
   ListHandCard: []

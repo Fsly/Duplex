@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8065235571224226034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8065235571224226037}
+  - component: {fileID: 8065235571224226036}
+  m_Layer: 0
+  m_Name: "010\u6D41\u661F\u96E8"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8065235571224226037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8065235571224226034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 684.9665, y: 607.36346, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8065235571224226036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8065235571224226034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd78c1c50684c44091dccc469bd0999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCardNo: 10
+  CardName: "\u6D41\u661F\u96E8"
+  CardIntroduction: "\u6839\u636E\u6CE8\u5165\u9B54\u529B\u7684\u91CF\u9020\u6210\u4E0D\u540C\u7684\u4F24\u5BB3"
+  CardEffect: "\u53D1\u52A8\u65F6\uFF0C\u53EF\u4EE5\u4E22\u5F03\u81F3\u591A3\u5F20\u624B\u724C\uFF0C\u6BCF\u5F20\u4F7F\u4F24\u5BB3+1"
+  counterAttribute: 1
+  ActionPoint: 2
+  damageAttribute: 1
+  Damage: 2
+  canCounter: 1
+  attackSprite: {fileID: 21300000, guid: 18f1292dd77adff4989823433934a48d, type: 3}
+  attackBallSprite: {fileID: 21300070, guid: 26c155b30bb820743842ee03cfe3cfb3, type: 3}
+  damageCubeSprite: {fileID: 21300002, guid: 69de34e564fc0e448907d236684f2279, type: 3}

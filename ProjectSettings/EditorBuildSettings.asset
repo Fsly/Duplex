@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/TurnDemo.unity
+    guid: f0732b1ce0fd71948aad333199c686f5
   m_configObjects: {}
