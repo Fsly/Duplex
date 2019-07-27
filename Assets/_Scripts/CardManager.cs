@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -114,15 +113,13 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     IEnumerator InstantiateShowCard()
     {
         //出牌协程
+        
+        //赋值
         showingCard.attackCard = new AttackCard(attackCard);
         showingCard.counterCard = new CounterCard(counterCard);
-        showingCard.CardShowAnimation();
 
-        //GameObject showCard = Instantiate(gameObject) as GameObject;
-        //Transform showParent = GameObject.Find("ShowCardParent").GetComponent<Transform>();
-        //showCard.GetComponent<CardManager>().cardButton = HandCardButton.Cannot;
-        //showCard.transform.position = showParent.position;
-        //showCard.transform.parent = showParent;
+        //出牌
+        showingCard.InstantiateInit();
         yield return null;
     }
 }

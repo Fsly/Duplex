@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7930018215755403840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 684.9665, y: 607.36346, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,6 +51,7 @@ MonoBehaviour:
   ActionPoint: 3
   damageAttribute: 1
   Damage: 0
+  canCounter: 0
   attackSprite: {fileID: 21300000, guid: f4427b4f7f5f9d24f813d1805b3140f4, type: 3}
   attackBallSprite: {fileID: 21300070, guid: 26c155b30bb820743842ee03cfe3cfb3, type: 3}
   damageCubeSprite: {fileID: 21300002, guid: 69de34e564fc0e448907d236684f2279, type: 3}

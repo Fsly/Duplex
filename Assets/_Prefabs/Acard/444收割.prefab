@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4411413840675465332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4411413840675465331}
+  - component: {fileID: 4411413840675465330}
+  m_Layer: 0
+  m_Name: "444\u6536\u5272"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4411413840675465331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411413840675465332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4411413840675465330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411413840675465332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd78c1c50684c44091dccc469bd0999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCardNo: 444
+  CardName: "\u6536\u5272"
+  CardIntroduction: "\u6B64\u724C\u4E00\u51FA\uFF0C\u72B9\u5982\u771F\u6B63\u7684\u6B7B\u795E\u964D\u4E34\u4E00\u822C\uFF0C\u6536\u56DE\u4E16\u754C\u4E0A\u6E3A\u5C0F\u800C\u6B8B\u7F3A\u7684\u751F\u547D"
+  CardEffect: "\u6B64\u724C\u4E0D\u53EF\u88AB\u53CD\u51FB\u3002\u5BF9\u65B9HP-99"
+  counterAttribute: 1
+  ActionPoint: 3
+  damageAttribute: 1
+  Damage: 0
+  canCounter: 1
+  attackSprite: {fileID: 21300000, guid: e172abffc55814848ace75559e0de03c, type: 3}
+  attackBallSprite: {fileID: 21300086, guid: 26c155b30bb820743842ee03cfe3cfb3, type: 3}
+  damageCubeSprite: {fileID: 21300006, guid: 69de34e564fc0e448907d236684f2279, type: 3}

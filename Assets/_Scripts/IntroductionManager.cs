@@ -51,7 +51,7 @@ public class IntroductionManager : MonoBehaviour
 
     public void UpdateForDisplay()
     {
-        //更新内容，为了显示
+        //更新内容，为了显示 
         IntroductionAI.sprite = attackCard.attackSprite;
         IntroductionCI.sprite = counterCard.counterSprite;
         IntroductionAT.text = "卡名：" + attackCard.CardName + " " + attackCard.ActionPoint + "/" + attackCard.Damage

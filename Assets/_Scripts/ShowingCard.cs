@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using DG.Tweening;
 
 public class ShowingCard : MonoBehaviour
 {
@@ -15,9 +15,27 @@ public class ShowingCard : MonoBehaviour
     public CounterCard counterCard;
     public AttackCard attackCard;
 
-    public void CardShowAnimation()
+    //出牌动画
+    public void CardShowAnimation(Transform cardTransform)
     {
-        
+        Vector3 bahandSet = new Vector3(0, -100f, 0);
+        cardTransform.parent = transform;
+        cardTransform.position = transform.position + bahandSet;
+        cardTransform.DOMove(transform.position, 0.5f).SetEase(Ease.OutBack);
+    }
+
+    //生成牌
+    public void InstantiateInit()
+    {
+        GameObject GoShowCard = Instantiate(showCard) as GameObject;
+        showCardManager = GoShowCard.GetComponent<CardManager>();
+        showCardManager.attackCard = attackCard;
+        showCardManager.counterCard = counterCard;
+        showCardManager.cardButton = HandCardButton.Cannot;
+        showCardManager.init();
+
+        //出牌动画
+        CardShowAnimation(GoShowCard.transform);
     }
 
 }
