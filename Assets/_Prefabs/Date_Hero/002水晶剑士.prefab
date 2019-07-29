@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2325176630363239681
+--- !u!1 &1788387673800773540
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2325176630363239683}
-  - component: {fileID: 2325176630363239680}
+  - component: {fileID: 1788387673800773542}
+  - component: {fileID: 1788387673800773541}
   m_Layer: 0
-  m_Name: "003\u5171\u9E23\u6CD5\u5E08"
+  m_Name: "002\u6C34\u6676\u5251\u58EB"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2325176630363239683
+--- !u!4 &1788387673800773542
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2325176630363239681}
+  m_GameObject: {fileID: 1788387673800773540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,21 +31,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2325176630363239680
+--- !u!114 &1788387673800773541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2325176630363239681}
+  m_GameObject: {fileID: 1788387673800773540}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 890e260092338de439a604be489696af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  No: 3
-  monicker: "\u5171\u9E23\u6CD5\u5E08"
-  introduction: "\u638C\u7BA1\u7687\u5BA4\u796D\u7940\u4E8B\u52A1\u7684\u957F\u8005\uFF0C\u62E5\u6709\u7AA5\u63A2\u4ED6\u4EBA\u5185\u5FC3\u7684\u80FD\u529B"
-  effect: "\u5F53\u5BF9\u65B9\u4F7F\u7528\u9B54\u6CD5\u8FDB\u653B\u724C\u65F6\uFF0C\u5982\u679C\u4F60\u6253\u51FA\u53CD\u51FB\u724C\uFF0C\u5219\u56DE\u590D1\u70B9HP\u3002"
-  HP: 12
-  sprite: {fileID: 21300000, guid: 308ca1ddabc0866449b864c97c87e842, type: 3}
+  No: 2
+  monicker: "\u6C34\u6676\u5251\u58EB"
+  introduction: "\u88AB\u56FD\u738B\u4EB2\u81EA\u9009\u62D4\u51FA\u7684\u7CBE\u82F1\uFF0C\u5929\u751F\u62E5\u6709\u4F18\u79C0\u7684\u9B54\u6CD5\u9002\u5E94\u6027"
+  effect: "\u4F60\u6BCF\u6B21\u4F7F\u7528\u9B54\u6CD5\u884C\u52A8\u724C\u540E\uFF0C\u4E0B\u4E00\u6B21\u7269\u7406\u4F24\u5BB3+1\uFF08\u4E0D\u53EF\u53E0\u52A0\uFF09\u3002"
+  MaxHP: 15
+  sprite: {fileID: 21300000, guid: 150038d0318a99e47a5f09373e1b95b7, type: 3}
+  headSprite: {fileID: 21300000, guid: 2facb088dc8fc994bbac61e4c9e8cbe2, type: 3}

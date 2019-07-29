@@ -103,7 +103,8 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         //使用卡牌
 
-        //开启协程
+
+        //开启动画协程
         StartCoroutine(InstantiateShowCard());
 
         //删除卡牌
@@ -112,8 +113,8 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     IEnumerator InstantiateShowCard()
     {
-        //出牌协程
-        
+        //出牌动画协程
+
         //赋值
         showingCard.attackCard = new AttackCard(attackCard);
         showingCard.counterCard = new CounterCard(counterCard);
@@ -131,5 +132,7 @@ public enum HandCardButton
 {
     Attack,
     Counter,
+    Hero,
+    Awake,
     Cannot
 }

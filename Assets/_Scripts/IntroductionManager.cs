@@ -6,9 +6,10 @@ using DG.Tweening;
 
 public class IntroductionManager : MonoBehaviour
 {
-    //介绍框综合管理
+    //行动卡介绍框管理
+    //介绍框显示/隐藏/更新
 
-    //公共介绍框UI
+    //介绍框UI
     public Transform IntroductionFrame;
     public Image IntroductionAI;
     public Image IntroductionCI;
@@ -51,7 +52,7 @@ public class IntroductionManager : MonoBehaviour
 
     public void UpdateForDisplay()
     {
-        //更新内容，为了显示 
+        //更新内容
         IntroductionAI.sprite = attackCard.attackSprite;
         IntroductionCI.sprite = counterCard.counterSprite;
         IntroductionAT.text = "卡名：" + attackCard.CardName + " " + attackCard.ActionPoint + "/" + attackCard.Damage

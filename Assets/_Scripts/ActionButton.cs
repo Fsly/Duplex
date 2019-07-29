@@ -7,7 +7,11 @@ using UnityEngine.EventSystems;
 public class ActionButton : MonoBehaviour, IPointerExitHandler
 {
     //卡片按钮动画
+    //旋转出现，鼠标离开消失
+    //按钮事件
+
     public CardManager cardManager;
+    public SelectHeroButton selectHeroButton;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,12 @@ public class ActionButton : MonoBehaviour, IPointerExitHandler
     {
         //点击事件
         cardManager.UseCard();
+    }
+
+    public void ButtonClick2()
+    {
+        //点击事件
+        selectHeroButton.UseCard();
     }
 
     public void OnPointerExit(PointerEventData eventData)

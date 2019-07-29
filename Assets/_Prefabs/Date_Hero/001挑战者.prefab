@@ -47,5 +47,6 @@ MonoBehaviour:
   monicker: "\u6311\u6218\u8005"
   introduction: "\u6765\u81EA\u65AF\u5DF4\u8FBE\u7684\u65E0\u540D\u6311\u6218\u8005\uFF0C\u6563\u53D1\u7740\u6D53\u70C8\u7684\u6740\u610F"
   effect: "\u4E00\u56DE\u5408\u4E00\u6B21\uFF0C\u4E3B\u8981\u9636\u6BB5\u53D1\u52A8\uFF0C\u81EA\u5DF1HP-1\uFF0C\u968F\u673A\u5F03\u5BF9\u65B9\u4E00\u5F20\u624B\u724C\u3002"
-  HP: 15
+  MaxHP: 15
   sprite: {fileID: 21300000, guid: 90b48169a10d2b74a912aef15d7ab7e4, type: 3}
+  headSprite: {fileID: 21300000, guid: 8624910b3a2ffb04abb41af66d88d366, type: 3}

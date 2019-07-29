@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class RoundManager : MonoBehaviour
 {
     //回合周期
+    //背景
+
     public GameObject StartUI;//开始的UI
     public Transform MainCanvas;//主画布
 
