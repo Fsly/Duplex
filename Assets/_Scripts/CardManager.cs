@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    //手牌实例：手牌点击功能实现，手牌属性及显示
+    //手牌实例
+    //手牌点击功能实现
+    //手牌属性及显示
 
     //卡牌信息存储
     public CounterCard counterCard;

@@ -5,7 +5,8 @@ using UnityEngine;
 public class SelectHeroButton : MonoBehaviour
 {
     //选择按钮
-    //用于英雄卡和觉醒卡实例，点击生成一个确定按钮
+    //用于英雄卡和觉醒卡实例
+    //点击生成一个确定按钮
 
     //点击事件
     public HandCardButton cardButton;//产生何种按钮，不影响功能

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 514252025162637503}
   - component: {fileID: 514252025162637502}
   - component: {fileID: 514252025162637497}
+  - component: {fileID: 1484361582703303191}
   m_Layer: 5
   m_Name: AwakeCard
   m_TagString: Untagged
@@ -27,7 +28,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514252025162637500}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -147,6 +148,21 @@ MonoBehaviour:
     type: 3}
   awakeButton: {fileID: 8445821279395356669, guid: 707c7a7c47b816941bcbedd456e0d541,
     type: 3}
+--- !u!114 &1484361582703303191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514252025162637500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6aac4439b2d6f44894974a4b2fedec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awake: {fileID: 0}
+  awakeImage: {fileID: 514252025384047579}
+  monickerText: {fileID: 514252025361540155}
 --- !u!1 &514252025361540152
 GameObject:
   m_ObjectHideFlags: 0

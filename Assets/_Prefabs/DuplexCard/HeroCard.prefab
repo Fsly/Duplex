@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1197411342124028149}
   - component: {fileID: 7383854340382248378}
   - component: {fileID: 1197411342124028150}
+  - component: {fileID: 860511499}
   m_Layer: 5
   m_Name: HeroCard
   m_TagString: Untagged
@@ -27,7 +28,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197411342124028147}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -148,6 +149,22 @@ MonoBehaviour:
     type: 3}
   awakeButton: {fileID: 8445821279395356669, guid: 707c7a7c47b816941bcbedd456e0d541,
     type: 3}
+--- !u!114 &860511499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197411342124028147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129a23d19574aa24eac508b6d0d3ff71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hero: {fileID: 2325176630363239680, guid: a7edb198967ef2947b27b0745cbb0f41, type: 3}
+  heroImage: {fileID: 1197411343203370667}
+  monickerText: {fileID: 5925901472931125242}
+  maxHPText: {fileID: 5925901474337691020}
 --- !u!1 &1197411343203370665
 GameObject:
   m_ObjectHideFlags: 0
