@@ -129,7 +129,7 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
 
 
-
+//卡种记号
 public enum HandCardButton
 {
     Attack,
