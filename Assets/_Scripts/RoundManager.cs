@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour
 {
+    //回合管理
     //回合周期
     //背景
 
     public GameObject StartUI;//开始的UI
     public Transform MainCanvas;//主画布
 
-
+    //背景管理
     public Sprite[] BgSprite;
     public Image BgImage;
-
     public int BgNo;
 
     // Start is called before the first frame update
@@ -37,7 +37,7 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-
+    //随机背景
     void RandomBackGround()
     {
         BgNo = Random.Range(0, BgSprite.Length);

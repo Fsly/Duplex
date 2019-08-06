@@ -14,7 +14,7 @@ public class AwakeCardManager : MonoBehaviour
     public Image awakeImage;
     public Text monickerText;
 
-    public void init()
+    public void Init()
     {
         //卡面载入
         awakeImage.sprite = awake.sprite;

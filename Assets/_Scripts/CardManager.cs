@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    //手牌实例
-    //手牌点击功能实现
-    //手牌属性及显示
+    //手牌实例,出牌实例
+    //手牌点击功能实现,能否出牌判断
+    //手牌,出牌属性及显示
 
     //卡牌信息存储
     public CounterCard counterCard;
@@ -40,6 +40,13 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     //出牌类
     public ShowingCard showingCard;
 
+    //玩家类
+    public PlayerManager myPlayer;
+
+    
+    public GameObject apNotEnough;//AP不足提示
+    public Transform mainCanvas;//主画布
+
     // Update is called once per frame
     void Update()
     {
@@ -60,9 +67,11 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         counterBallImage.sprite = counterCard.counterBallSprite;
         counterPointText.text = counterCard.ActionPoint + "";
 
-        //介绍框获取
+        //介绍框获取，出牌类获取，我方玩家获取
         introductionManager = GameObject.Find("Introduction").GetComponent<IntroductionManager>();
         showingCard = GameObject.Find("ShowCardParent").GetComponent<ShowingCard>();
+        myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
+        mainCanvas = GameObject.Find("Canvas").transform;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -105,12 +114,20 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         //使用卡牌
 
+        //判断AP是否够
+        if (myPlayer.IsApEnough(attackCard.ActionPoint))
+        {
+            //开启动画协程
+            StartCoroutine(InstantiateShowCard());
 
-        //开启动画协程
-        StartCoroutine(InstantiateShowCard());
-
-        //删除卡牌
-        GameObject.Find("HandCardPrefab").GetComponent<CardCurved>().DestroyTheCard(handCardNo);
+            //删除卡牌
+            GameObject.Find("HandCardPrefab").GetComponent<CardCurved>().DestroyTheCard(handCardNo);
+        }
+        else
+        {
+            //显示AP不足
+            Instantiate(apNotEnough, mainCanvas);
+        }
     }
 
     IEnumerator InstantiateShowCard()

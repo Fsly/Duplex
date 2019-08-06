@@ -14,7 +14,7 @@ public class HeroCardManager : MonoBehaviour
     public Text monickerText;
     public Text maxHPText;
 
-    public void init()
+    public void Init()
     {
         //卡面载入
         heroImage.sprite = hero.sprite;

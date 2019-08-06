@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class ShowingCard : MonoBehaviour
+public class EnemyShowCard : MonoBehaviour
 {
-    //我方出牌管理类
-    //我方出牌实例：生成出牌，出牌动画
+    //对方出牌管理类
+    //对方出牌实例：生成出牌，出牌动画
     //伤害计算
 
     //生成的显示卡（打出卡）
@@ -20,12 +20,18 @@ public class ShowingCard : MonoBehaviour
     public CounterCard counterCard;
     public AttackCard attackCard;
 
-    public GameObject GoShowCard;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            InstantiateInit();
+        }
+    }
 
     //出牌动画
     public void CardShowAnimation(Transform cardTransform)
     {
-        Vector3 bahandSet = new Vector3(0, -100f, 0);
+        Vector3 bahandSet = new Vector3(0, 100f, 0);
         cardTransform.parent = transform;
         cardTransform.position = transform.position + bahandSet;
         cardTransform.DOMove(transform.position, 0.5f).SetEase(Ease.OutBack);
@@ -42,8 +48,7 @@ public class ShowingCard : MonoBehaviour
     //生成牌
     public void InstantiateInit()
     {
-        Destroy(GoShowCard);
-        GoShowCard = Instantiate(showCard) as GameObject;
+        GameObject GoShowCard = Instantiate(showCard) as GameObject;
         showCardManager = GoShowCard.GetComponent<CardManager>();
         showCardManager.attackCard = attackCard;
         showCardManager.counterCard = counterCard;

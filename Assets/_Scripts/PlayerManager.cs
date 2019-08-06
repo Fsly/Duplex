@@ -9,11 +9,13 @@ public class PlayerManager : MonoBehaviour
     //用于双方头像框UI
     //实现HP和AP动画（暂未）
 
-    public Hero hero;
-    public Awake awake;
+    public PlayerType type;//玩家类型
 
-    public int HP;
-    public int AP;
+    public Hero hero;//选用的英雄
+    public Awake awake;//选用的觉醒
+
+    public int HP; //当前HP
+    public int AP; //当前AP
 
     //UI
     public Text HPText;
@@ -21,9 +23,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject APBar;
     public Image heroHeadImage;
 
-    public List<GameObject> ListAPBall = new List<GameObject>(); //手牌列表 
+    public List<GameObject> ListAPBall = new List<GameObject>(); //AP显示列表 
 
-    //Prefab
+    //AP Prefab
     public GameObject APBall;
 
     // Start is called before the first frame update
@@ -37,34 +39,85 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            GameObject GOAPBall = Instantiate(APBall) as GameObject;
-            GOAPBall.transform.parent = APBar.transform;
-            ListAPBall.Add(GOAPBall);
+            ApChange(1);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Destroy(ListAPBall[0]);
-            ListAPBall.Remove(ListAPBall[0]);
+            ApChange(-1);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            HP -= 1;
-            HPText.text = HP + "/" + hero.MaxHP;
-            if (HP >= 0) HPSlider.value = (float)HP / (float)hero.MaxHP;
+            HpChange(-1);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            HP += 1;
-            HPText.text = HP + "/" + hero.MaxHP;
-            if (HP <= hero.MaxHP) HPSlider.value = (float)HP / (float)hero.MaxHP;
+            HpChange(1);
         }
     }
 
+    //初始化
     public void init()
     {
+        //初始化HP
         HP = hero.MaxHP;
         HPText.text = HP + "/" + hero.MaxHP;
         HPSlider.value = 1f;
         heroHeadImage.sprite = hero.headSprite;
+
+        //初始化AP
+        AP = 3;
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject GOAPBall = Instantiate(APBall) as GameObject;
+            GOAPBall.transform.parent = APBar.transform;
+            ListAPBall.Add(GOAPBall);
+        }
+    }
+
+    //生命变化（数值改变，显示动画）
+    public void HpChange(int addNum)
+    {
+        HP += addNum;
+        HPText.text = HP + "/" + hero.MaxHP;
+        if (HP >= 0) HPSlider.value = (float)HP / hero.MaxHP;
+    }
+
+    //行动点变化（数值改变，显示动画）
+    public void ApChange(int addNum)
+    {
+        if (-addNum > AP) addNum = -AP;
+        AP += addNum;
+        if (addNum > 0)
+        {
+            for (int i = 0; i < addNum; i++)
+            {
+                GameObject GOAPBall = Instantiate(APBall) as GameObject;
+                GOAPBall.transform.parent = APBar.transform;
+                ListAPBall.Add(GOAPBall);
+            }
+        }
+        else if(addNum < 0)
+        {
+            for (int i = 0; i < -addNum; i++)
+            {
+                Destroy(ListAPBall[0]);
+                ListAPBall.Remove(ListAPBall[0]);
+            }
+        }
+    }
+
+    //AP是否够
+    public bool IsApEnough(int needAp)
+    {
+        if (needAp > AP) return false;
+        else return true;
     }
 }
+
+//卡种记号
+public enum PlayerType
+{
+    player1,
+    player2
+}
+

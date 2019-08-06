@@ -61,17 +61,18 @@ MonoBehaviour:
   attackPointText: {fileID: 8567736703713599539}
   counterPointText: {fileID: 8567736702467911149}
   damageText: {fileID: 8567736702832884735}
-  IntroductionFrame: {fileID: 0}
-  IntroductionAI: {fileID: 0}
-  IntroductionCI: {fileID: 0}
-  IntroductionAT: {fileID: 0}
-  IntroductionCT: {fileID: 0}
-  IntroductionInit: {x: 1480, y: 500, z: 0}
+  introductionManager: {fileID: 0}
   cardButton: 0
   attackButton: {fileID: 2984514759221265718, guid: 1b4601367b0f7984cadf4cef8fbdba6e,
     type: 3}
   counterButton: {fileID: 3861825518853198410, guid: 73a33133a2791d94c82ac88c6415054c,
     type: 3}
+  handCardNo: 0
+  showingCard: {fileID: 0}
+  myPlayer: {fileID: 0}
+  apNotEnough: {fileID: 6324203205089366509, guid: c01b2c9fddbc2074d83273de3b43eee0,
+    type: 3}
+  mainCanvas: {fileID: 0}
 --- !u!1 &8567736702126271670
 GameObject:
   m_ObjectHideFlags: 0

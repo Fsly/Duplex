@@ -52,8 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14db1d2398cfe3644ad6cbaca10ab8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   hero: {fileID: 8903456477509484125, guid: 83e0221656711734cac9b31b16dbaf04, type: 3}
-  awake: {fileID: 0}
+  awake: {fileID: 1294990269325173812, guid: 9735ffaf77dd7534a9a3454869552156, type: 3}
   HP: 0
   AP: 0
   HPText: {fileID: 4013415372283479147}
@@ -587,11 +588,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 35
+    m_Font: {fileID: 12800000, guid: b1028241fee0c6f45af1d809a1bc5a84, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 3
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0

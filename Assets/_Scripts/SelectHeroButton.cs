@@ -40,9 +40,12 @@ public class SelectHeroButton : MonoBehaviour
         {
             GOCardButton = Instantiate(awakeButton) as GameObject;
         }
-        GOCardButton.transform.position = Input.mousePosition;
-        GOCardButton.transform.parent = transform;
-        GOCardButton.GetComponent<ActionButton>().selectHeroButton = this;
+        if (cardButton != HandCardButton.Cannot)
+        {
+            GOCardButton.transform.position = Input.mousePosition;
+            GOCardButton.transform.parent = transform;
+            GOCardButton.GetComponent<ActionButton>().selectHeroButton = this;
+        }
     }
 
     public void UseCard()
