@@ -56,13 +56,14 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     //卡面载入，介绍框获取
     public void init()
     {
-        //卡面载入
+        //A卡面载入
         attackImage.sprite = attackCard.attackSprite;
         attackBallImage.sprite = attackCard.attackBallSprite;
         damageCubeImage.sprite = attackCard.damageCubeSprite;
         attackPointText.text = attackCard.ActionPoint + "";
         damageText.text = attackCard.Damage + "";
 
+        //C卡面载入
         counterImage.sprite = counterCard.counterSprite;
         counterBallImage.sprite = counterCard.counterBallSprite;
         counterPointText.text = counterCard.ActionPoint + "";
