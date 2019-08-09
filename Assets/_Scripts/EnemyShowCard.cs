@@ -40,7 +40,7 @@ public class EnemyShowCard : MonoBehaviour
     //AP，HP计算
     public void HpApChange()
     {
-        //我方AP减少，敌方HP减少
+        //我方HP减少，敌方AP减少
         user.ApChange(-attackCard.ActionPoint);
         enemy.HpChange(-attackCard.Damage);
     }

@@ -79,13 +79,13 @@ public class CardCurved : MonoBehaviour
     }
 
     //为手牌添加动画
-    private void HandCardAnimation(GameObject GO, float Vec3_Z)
+    public void HandCardAnimation(GameObject GO, float Vec3_Z)
     {
         GO.transform.DORotate(new Vector3(0, 0, Vec3_Z), 0.3F, RotateMode.Fast);
     }
 
     //增加手牌时播放的动画
-    private void AddCardAnimations()
+    public void AddCardAnimations()
     {
         if (ListHandCard.Count == 1)
         {
@@ -102,7 +102,7 @@ public class CardCurved : MonoBehaviour
     }
 
     //使用手牌时播放的动画
-    private void UseCardAnimation()
+    public void UseCardAnimation()
     {
         if (ListHandCard.Count == 1)
         {
