@@ -17,13 +17,19 @@ public class RoundManager : MonoBehaviour
     public Image BgImage;
     public int BgNo;
 
+    //当前状态
+    public RoundPhase roundPhase;
+
     // Start is called before the first frame update
     void Start()
     {
         //随机场景
         RandomBackGround();
-        //回合开始
+        //回合开始动画
         Instantiate(StartUI, MainCanvas);
+
+        //阶段初始化
+        roundPhase = RoundPhase.Preparatory;
     }
 
     // Update is called once per frame
@@ -35,6 +41,9 @@ public class RoundManager : MonoBehaviour
             else BgNo = 0;
             BgImage.sprite = BgSprite[BgNo];
         }
+
+        //阶段判断
+        RoundGoing();
     }
 
     //随机背景
@@ -43,4 +52,23 @@ public class RoundManager : MonoBehaviour
         BgNo = Random.Range(0, BgSprite.Length);
         BgImage.sprite = BgSprite[BgNo];
     }
+
+    public void RoundGoing()
+    {
+        if (roundPhase == RoundPhase.Preparatory)
+        {
+
+        }
+    }
 }
+
+//阶段:准备,抽牌,主要,弃牌,结束
+public enum RoundPhase
+{
+    Preparatory,
+    Draw,
+    Main,
+    Abandonment,
+    Ending
+}
+

@@ -21,6 +21,6 @@ public class RoundOver : MonoBehaviour
 
     public void ClickToEnd()
     {
-        ROImage.DORotate(new Vector3(0f, 0f, 360f), 0.3f, RotateMode.FastBeyond360);
+        ROImage.DORotate(new Vector3(0f, 0f, 720f), 0.6f, RotateMode.FastBeyond360);
     }
 }
