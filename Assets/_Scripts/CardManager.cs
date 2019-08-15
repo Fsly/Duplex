@@ -43,9 +43,11 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     //玩家类
     public PlayerManager myPlayer;
 
-    
+
     public GameObject apNotEnough;//AP不足提示
     public Transform mainCanvas;//主画布
+
+    private RoundManager roundManager;
 
     // Update is called once per frame
     void Update()
@@ -68,11 +70,12 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         counterBallImage.sprite = counterCard.counterBallSprite;
         counterPointText.text = counterCard.ActionPoint + "";
 
-        //介绍框获取，出牌类获取，我方玩家获取
+        //介绍框获取，出牌类获取，我方玩家获取,回合管理获取
         introductionManager = GameObject.Find("Introduction").GetComponent<IntroductionManager>();
         showingCard = GameObject.Find("ShowCardParent").GetComponent<ShowingCard>();
         myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
         mainCanvas = GameObject.Find("Canvas").transform;
+        roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -96,19 +99,22 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void ButtonInstantiate()
     {
-        //点击卡牌根据情况生成按钮
-        GameObject GOCardButton = null;
-        if (cardButton == HandCardButton.Attack)
+        //如果在我方主要阶段点击卡牌根据情况生成按钮
+        if (roundManager.roundPhase == RoundPhase.Main && roundManager.isMyturn)
         {
-            GOCardButton = Instantiate(attackButton) as GameObject;
+            GameObject GOCardButton = null;
+            if (cardButton == HandCardButton.Attack)
+            {
+                GOCardButton = Instantiate(attackButton) as GameObject;
+            }
+            else if (cardButton == HandCardButton.Counter)
+            {
+                GOCardButton = Instantiate(counterButton) as GameObject;
+            }
+            GOCardButton.transform.position = Input.mousePosition;
+            GOCardButton.transform.parent = transform;
+            GOCardButton.GetComponent<ActionButton>().cardManager = this;
         }
-        else if (cardButton == HandCardButton.Counter)
-        {
-            GOCardButton = Instantiate(counterButton) as GameObject;
-        }
-        GOCardButton.transform.position = Input.mousePosition;
-        GOCardButton.transform.parent = transform;
-        GOCardButton.GetComponent<ActionButton>().cardManager = this;
     }
 
     public void UseCard()

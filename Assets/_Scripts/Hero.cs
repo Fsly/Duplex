@@ -10,7 +10,7 @@ public class Hero : MonoBehaviour
     public string introduction;//英雄介绍
     public string effect;//英雄效果
 
-    public int MaxHP; //英雄生命
+    public int MaxHP;  //英雄生命
 
     public Sprite sprite; //英雄图片
     public Sprite headSprite; //英雄头像图片

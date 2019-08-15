@@ -10,9 +10,14 @@ public class RoundStart : MonoBehaviour
     public float keepTime = 0.5f;
     public float destroyTime = 1.0f;
 
+    private RoundManager roundManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        //物体获取
+        roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
+
         UIAnimation();
     }
 
@@ -26,6 +31,9 @@ public class RoundStart : MonoBehaviour
             {
                 transform.DOScale(new Vector3(1, 0, 1), 0.2f).OnComplete(() =>
                 {
+                    if(roundManager.roundPhase==RoundPhase.Preparatory)
+                        roundManager.DrawRoundStart();
+
                     Destroy(gameObject);
                 });
             });

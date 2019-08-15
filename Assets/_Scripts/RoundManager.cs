@@ -10,6 +10,7 @@ public class RoundManager : MonoBehaviour
     //背景
 
     public GameObject StartUI;//开始的UI
+    public GameObject getCardPrefabs;//抽牌预制体
     public Transform MainCanvas;//主画布
 
     //背景管理
@@ -17,19 +18,26 @@ public class RoundManager : MonoBehaviour
     public Image BgImage;
     public int BgNo;
 
-    //当前状态
-    public RoundPhase roundPhase;
+    public int roundNum; //回合计数
+    public bool isMyturn;//谁的回合
+    public RoundPhase roundPhase; //当前状态
+
+    public PlayerManager myPlayer;//我方玩家类
 
     // Start is called before the first frame update
     void Start()
     {
         //随机场景
         RandomBackGround();
-        //回合开始动画
-        Instantiate(StartUI, MainCanvas);
+    }
 
-        //阶段初始化
-        roundPhase = RoundPhase.Preparatory;
+    public void GameStartReady()
+    {
+        //初始化赋值
+        RoundGoingStart();
+
+        //目前设定我方先开，所有进入我方准备阶段
+        PreparatoryRoundStart();
     }
 
     // Update is called once per frame
@@ -41,9 +49,6 @@ public class RoundManager : MonoBehaviour
             else BgNo = 0;
             BgImage.sprite = BgSprite[BgNo];
         }
-
-        //阶段判断
-        RoundGoing();
     }
 
     //随机背景
@@ -53,12 +58,42 @@ public class RoundManager : MonoBehaviour
         BgImage.sprite = BgSprite[BgNo];
     }
 
-    public void RoundGoing()
+    //游戏初始化赋值
+    public void RoundGoingStart()
     {
-        if (roundPhase == RoundPhase.Preparatory)
-        {
+        roundPhase = RoundPhase.Preparatory;
+        roundNum = 1;
+        isMyturn = true;
 
-        }
+        myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
+    }
+
+    //准备阶段初始化
+    public void PreparatoryRoundStart()
+    {
+        roundPhase = RoundPhase.Preparatory;
+
+        //回合开始动画
+        Instantiate(StartUI, MainCanvas);
+
+        //回复行动点
+        myPlayer.ApGetToStart();
+    }
+
+    //抽牌阶段初始化
+    public void DrawRoundStart()
+    {
+        roundPhase = RoundPhase.Draw;
+
+        Instantiate(getCardPrefabs, MainCanvas);
+    }
+
+    //主要阶段初始化
+    public void MainRoundStart()
+    {
+        roundPhase = RoundPhase.Main;
+
+        
     }
 }
 

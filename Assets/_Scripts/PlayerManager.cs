@@ -28,10 +28,15 @@ public class PlayerManager : MonoBehaviour
     //AP Prefab
     public GameObject APBall;
 
+    private RoundManager roundManager;
+    private EnemyHCurved enemyHCurved;
+    private CardCurved cardCurved;
+    public PlayerManager enemyPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
-        init();
+        //Init();
     }
 
     // Update is called once per frame
@@ -56,7 +61,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     //初始化
-    public void init()
+    public void Init()
     {
         //初始化HP
         HP = hero.MaxHP;
@@ -72,6 +77,11 @@ public class PlayerManager : MonoBehaviour
             GOAPBall.transform.parent = APBar.transform;
             ListAPBall.Add(GOAPBall);
         }
+
+        //物体获取
+        roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
+        enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
+        cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
     }
 
     //生命变化（数值改变，显示动画）
@@ -111,6 +121,22 @@ public class PlayerManager : MonoBehaviour
     {
         if (needAp > AP) return false;
         else return true;
+    }
+
+    //回复体力
+    public void ApGetToStart()
+    {
+        //如果是第一回合，双方抽牌，恢复体力
+        if (roundManager.roundNum == 1)
+        {
+            ApChange(-1);
+        }
+        else
+        {
+            if (AP == 0) ApChange(3);
+            else if(AP == 1) ApChange(2);
+            else if (AP == 2) ApChange(1);
+        }
     }
 }
 
