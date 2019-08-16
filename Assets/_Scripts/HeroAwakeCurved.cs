@@ -93,7 +93,6 @@ public class HeroAwakeCurved : MonoBehaviour
             t_UI = GameObject.Find("RoundOverButtonInit").transform;
             roundOverButton.transform.DOMove(t_UI.position, 0.8f).SetEase(Ease.OutBack);
 
-
             //启动回合
             roundManager.GameStartReady();
 

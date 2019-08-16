@@ -172,6 +172,7 @@ public class CardCurved : MonoBehaviour
         card1.GetComponent<CardManager>().counterCard.counterBallSprite = card2.counterBallSprite;
     }
 
+    //移除指定牌
     public void DestroyTheCard(int DesCardNo)
     {
 
@@ -193,6 +194,12 @@ public class CardCurved : MonoBehaviour
                 return;
             }
         }
+    }
+
+    //弃牌
+    public void AbandonmentCard()
+    {
+        print("弃牌");
     }
 
     //测试用，随机生成一张游戏王手牌

@@ -24,6 +24,8 @@ public class RoundManager : MonoBehaviour
 
     public PlayerManager myPlayer;//我方玩家类
 
+    private CardCurved cardCurved;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +68,7 @@ public class RoundManager : MonoBehaviour
         isMyturn = true;
 
         myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
+        cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
     }
 
     //准备阶段初始化
@@ -92,8 +95,14 @@ public class RoundManager : MonoBehaviour
     public void MainRoundStart()
     {
         roundPhase = RoundPhase.Main;
+    }
 
-        
+    //弃牌阶段初始化
+    public void AbandonmentRoundStart()
+    {
+        roundPhase = RoundPhase.Abandonment;
+
+        cardCurved.AbandonmentCard();
     }
 }
 
