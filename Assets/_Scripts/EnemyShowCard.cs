@@ -20,6 +20,10 @@ public class EnemyShowCard : MonoBehaviour
     public CounterCard counterCard;
     public AttackCard attackCard;
 
+    public GameObject GoShowCard;
+
+    public RoundManager roundManager;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
@@ -37,7 +41,7 @@ public class EnemyShowCard : MonoBehaviour
         cardTransform.DOMove(transform.position, 0.5f).SetEase(Ease.OutBack);
     }
 
-    //AP，HP计算
+    //AP，HP计算,没计算反击，故废弃
     public void HpApChange()
     {
         //我方HP减少，敌方AP减少
@@ -45,10 +49,11 @@ public class EnemyShowCard : MonoBehaviour
         enemy.HpChange(-attackCard.Damage);
     }
 
-    //生成牌
+    //生成牌，播放出牌动画
     public void InstantiateInit()
     {
-        GameObject GoShowCard = Instantiate(showCard) as GameObject;
+        Destroy(GoShowCard);
+        GoShowCard = Instantiate(showCard) as GameObject;
         showCardManager = GoShowCard.GetComponent<CardManager>();
         showCardManager.attackCard = attackCard;
         showCardManager.counterCard = counterCard;
@@ -58,8 +63,19 @@ public class EnemyShowCard : MonoBehaviour
         //出牌动画
         CardShowAnimation(GoShowCard.transform);
 
-        //AP，HP计算
-        HpApChange();
+        if (roundManager.isMyturn && roundManager.waitCounter == WaitPhase.WaitEnemy)
+        {
+            //反击
+            roundManager.EnemyWaitOK();
+        }
+        else
+        {
+            //进攻
+            if (attackCard.canCounter && enemy.AP != 0)
+            {
+                roundManager.WaitingMe();
+            }
+        }
     }
 
 }

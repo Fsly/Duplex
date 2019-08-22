@@ -47,7 +47,7 @@ public class GetCard : MonoBehaviour
         transform.position = oldPos + new Vector3(0, dy, 0);
     }
 
-    //点击抽卡
+    //点击抽卡,之后进入主要阶段
     public void ClickToGet2Card()
     {
         //抽卡，播放动画
@@ -55,6 +55,7 @@ public class GetCard : MonoBehaviour
         cardCurved.GetCards();
         cardCurved.AddCardAnimations();
 
+        //进入主要阶段
         roundManager.MainRoundStart();
 
         //删除物体

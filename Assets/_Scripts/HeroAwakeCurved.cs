@@ -71,7 +71,7 @@ public class HeroAwakeCurved : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //双方都准备好时，进入下一步
+        //系统决定谁先开，双方都准备好时，进入下一步
         if (meIsReady && enemyIsReady && decideWhoFrist)
         {
             //向双方玩家控制传值
@@ -80,8 +80,7 @@ public class HeroAwakeCurved : MonoBehaviour
             enemyPlayerManager.hero = enemyHero;
             enemyPlayerManager.awake = enemyAwake;
            
-
-            //显示
+            //英雄显示
             myPlayerManager.Init();
             enemyPlayerManager.Init();
 
@@ -95,6 +94,8 @@ public class HeroAwakeCurved : MonoBehaviour
 
             //启动回合
             roundManager.GameStartReady();
+
+            myPlayerManager.AllGet4Card();
 
             //删除选择界面
             Destroy(gameObject);

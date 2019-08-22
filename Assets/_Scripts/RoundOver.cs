@@ -27,7 +27,8 @@ public class RoundOver : MonoBehaviour
     {
         ROImage.DORotate(new Vector3(0f, 0f, 720f), 0.6f, RotateMode.FastBeyond360);
 
-        if (roundManager.roundPhase == RoundPhase.Main)
+        if (roundManager.roundPhase == RoundPhase.Main
+            && roundManager.waitCounter == WaitPhase.NoWait)
         {
             roundManager.AbandonmentRoundStart();
         }

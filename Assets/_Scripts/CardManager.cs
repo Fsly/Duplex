@@ -99,18 +99,22 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void ButtonInstantiate()
     {
-        //如果在我方主要阶段点击卡牌根据情况生成按钮
-        if (roundManager.roundPhase == RoundPhase.Main && roundManager.isMyturn)
+        //根据情况生成按钮
+        GameObject GOCardButton = null;
+        if (roundManager.roundPhase == RoundPhase.Main
+            && roundManager.isMyturn
+            && roundManager.waitCounter == WaitPhase.NoWait)
         {
-            GameObject GOCardButton = null;
-            if (cardButton == HandCardButton.Attack)
-            {
-                GOCardButton = Instantiate(attackButton) as GameObject;
-            }
-            else if (cardButton == HandCardButton.Counter)
-            {
-                GOCardButton = Instantiate(counterButton) as GameObject;
-            }
+            //我方回合进攻
+            GOCardButton = Instantiate(attackButton) as GameObject;
+            GOCardButton.transform.position = Input.mousePosition;
+            GOCardButton.transform.parent = transform;
+            GOCardButton.GetComponent<ActionButton>().cardManager = this;
+        }
+        else if (roundManager.waitCounter == WaitPhase.WaitMe)
+        {
+            //对方回合反击
+            GOCardButton = Instantiate(counterButton) as GameObject;
             GOCardButton.transform.position = Input.mousePosition;
             GOCardButton.transform.parent = transform;
             GOCardButton.GetComponent<ActionButton>().cardManager = this;
@@ -150,8 +154,6 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         yield return null;
     }
 }
-
-
 
 //卡种记号
 public enum HandCardButton

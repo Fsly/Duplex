@@ -35,6 +35,7 @@ public class AttackCard : MonoBehaviour
         attackSprite = card.attackSprite;
         attackBallSprite = card.attackBallSprite;
         damageCubeSprite = card.damageCubeSprite;
+        canCounter = card.canCounter;
     }
 
 }

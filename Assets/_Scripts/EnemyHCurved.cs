@@ -6,17 +6,19 @@ public class EnemyHCurved : MonoBehaviour
 {
     //对方手牌管理
     public int handCardNum;//手牌数量
-    public GameObject backCard; //手牌物体(背面)
+    public GameObject backCard; //手牌物体(背面)预制体
 
     public List<GameObject> ListHandCard = new List<GameObject>(); //手牌列表
 
     //出牌类
     public EnemyShowCard showingCard;
 
+    public int NextCardNo;//下一张手牌的手牌号
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        NextCardNo = 0;
     }
 
     // Update is called once per frame
@@ -44,6 +46,8 @@ public class EnemyHCurved : MonoBehaviour
                 GameObject GOAPBall = Instantiate(backCard) as GameObject;
                 GOAPBall.transform.parent = transform;
                 ListHandCard.Add(GOAPBall);
+                GOAPBall.GetComponent<EnemyCardManager>().handCardNo = NextCardNo;
+                NextCardNo++;
                 GOAPBall.GetComponent<EnemyCardManager>().EnterAnimation();
             }
         }
@@ -53,6 +57,24 @@ public class EnemyHCurved : MonoBehaviour
             {
                 Destroy(ListHandCard[0]);
                 ListHandCard.Remove(ListHandCard[0]);
+            }
+        }
+    }
+
+    //移除指定牌
+    public void DestroyTheCard(int DesCardNo)
+    {
+
+        for (int i = 0; i < ListHandCard.Count; i++)
+        {
+            if (ListHandCard[i].GetComponent<EnemyCardManager>().handCardNo == DesCardNo)
+            {
+                Destroy(ListHandCard[i]);
+
+                //将删除的手牌从列表移除
+                ListHandCard.Remove(ListHandCard[i]);
+
+                return;
             }
         }
     }

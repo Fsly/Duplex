@@ -138,6 +138,20 @@ public class PlayerManager : MonoBehaviour
             else if (AP == 2) ApChange(1);
         }
     }
+
+    //双方各抽4张牌
+    public void AllGet4Card()
+    {
+        //我方抽卡，播放动画
+        cardCurved.GetCards();
+        cardCurved.GetCards();
+        cardCurved.GetCards();
+        cardCurved.GetCards();
+        cardCurved.AddCardAnimations();
+
+        //对方抽卡，播放动画
+        enemyHCurved.HCNumChange(4);
+    }
 }
 
 //卡种记号

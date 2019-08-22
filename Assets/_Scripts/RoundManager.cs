@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class RoundManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class RoundManager : MonoBehaviour
 
     public GameObject StartUI;//开始的UI
     public GameObject getCardPrefabs;//抽牌预制体
+    public GameObject waitPrefab; //等待预制体
+    public GameObject NoCounterPrefab;//不出反击牌预制体
     public Transform MainCanvas;//主画布
 
     //背景管理
@@ -18,13 +21,17 @@ public class RoundManager : MonoBehaviour
     public Image BgImage;
     public int BgNo;
 
+    //本局状态
     public int roundNum; //回合计数
     public bool isMyturn;//谁的回合
-    public RoundPhase roundPhase; //当前状态
+    public RoundPhase roundPhase; //当前阶段
+    public WaitPhase waitCounter; //是否等待反击
 
     public PlayerManager myPlayer;//我方玩家类
 
     private CardCurved cardCurved;
+
+    private Vector3 waitFirstSet;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +71,7 @@ public class RoundManager : MonoBehaviour
     public void RoundGoingStart()
     {
         roundPhase = RoundPhase.Preparatory;
+        waitCounter = WaitPhase.NoWait;
         roundNum = 1;
         isMyturn = true;
 
@@ -104,6 +112,36 @@ public class RoundManager : MonoBehaviour
 
         cardCurved.AbandonmentCard();
     }
+
+    //等待对方，提示框出现
+    public void WaitingEnemy()
+    {
+        waitCounter = WaitPhase.WaitEnemy;
+        waitFirstSet = waitPrefab.transform.position;
+        Transform t_UI = GameObject.Find("WaitInit").transform;
+        waitPrefab.transform.DOMove(t_UI.position, 0.8f).SetEase(Ease.OutBack);
+    }
+
+    //等待结束，提示框隐藏
+    public void EnemyWaitOK()
+    {
+        waitCounter = WaitPhase.NoWait;
+        waitPrefab.transform.DOMove(waitFirstSet, 0.8f).SetEase(Ease.OutBack);
+    }
+
+    //对方回合，等待我方打出反击牌
+    public void WaitingMe()
+    {
+        waitCounter = WaitPhase.WaitMe;
+
+        Instantiate(NoCounterPrefab, MainCanvas);
+    }
+
+    //我方打出反击牌，等待结束
+    public void MeWaitOK()
+    {
+        waitCounter = WaitPhase.NoWait;
+    }
 }
 
 //阶段:准备,抽牌,主要,弃牌,结束
@@ -114,5 +152,13 @@ public enum RoundPhase
     Main,
     Abandonment,
     Ending
+}
+
+//等待阶段
+public enum WaitPhase
+{
+    NoWait,
+    WaitMe,
+    WaitEnemy
 }
 
