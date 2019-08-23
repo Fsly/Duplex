@@ -452,6 +452,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartUI: {fileID: 3695254544842936509, guid: 9d3df8ecdffbfeb43b856ad5b6020cd5, type: 3}
+  EndingUI: {fileID: 8918394138914515980, guid: aad969c2724b87a419b44452eb9740d5,
+    type: 3}
+  EnemyStartUI: {fileID: 3427182152986667262, guid: 7f271b25490789b44a52b2c2a2484935,
+    type: 3}
+  EnemyEndingUI: {fileID: 4361407745503538658, guid: 1aa96d12ac624bc428754680b659aa1d,
+    type: 3}
   getCardPrefabs: {fileID: 5673092068555598029, guid: 0f4cda64b11afd5449ac828a3ec0736f,
     type: 3}
   waitPrefab: {fileID: 1610168009}

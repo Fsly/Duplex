@@ -43,6 +43,8 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     //玩家类
     public PlayerManager myPlayer;
 
+    //手牌类
+    public CardCurved cardCurved;
 
     public GameObject apNotEnough;//AP不足提示
     public Transform mainCanvas;//主画布
@@ -70,12 +72,13 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         counterBallImage.sprite = counterCard.counterBallSprite;
         counterPointText.text = counterCard.ActionPoint + "";
 
-        //介绍框获取，出牌类获取，我方玩家获取,回合管理获取
+        //物体获取
         introductionManager = GameObject.Find("Introduction").GetComponent<IntroductionManager>();
         showingCard = GameObject.Find("ShowCardParent").GetComponent<ShowingCard>();
         myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
         mainCanvas = GameObject.Find("Canvas").transform;
         roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
+        cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -97,27 +100,43 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             introductionManager.HiddenIntroduction();
     }
 
+    //点击事件
     public void ButtonInstantiate()
     {
-        //根据情况生成按钮
-        GameObject GOCardButton = null;
-        if (roundManager.roundPhase == RoundPhase.Main
-            && roundManager.isMyturn
-            && roundManager.waitCounter == WaitPhase.NoWait)
+        if (!cardCurved.isAbandonment)
         {
-            //我方回合进攻
-            GOCardButton = Instantiate(attackButton) as GameObject;
-            GOCardButton.transform.position = Input.mousePosition;
-            GOCardButton.transform.parent = transform;
-            GOCardButton.GetComponent<ActionButton>().cardManager = this;
+            //使用牌
+            //根据情况生成按钮
+            GameObject GOCardButton = null;
+            if (roundManager.roundPhase == RoundPhase.Main
+                && roundManager.isMyturn
+                && roundManager.waitCounter == WaitPhase.NoWait)
+            {
+                //我方回合进攻
+                GOCardButton = Instantiate(attackButton) as GameObject;
+                GOCardButton.transform.position = Input.mousePosition;
+                GOCardButton.transform.parent = transform;
+                GOCardButton.GetComponent<ActionButton>().cardManager = this;
+            }
+            else if (roundManager.waitCounter == WaitPhase.WaitMe)
+            {
+                //对方回合反击
+                GOCardButton = Instantiate(counterButton) as GameObject;
+                GOCardButton.transform.position = Input.mousePosition;
+                GOCardButton.transform.parent = transform;
+                GOCardButton.GetComponent<ActionButton>().cardManager = this;
+            }
         }
-        else if (roundManager.waitCounter == WaitPhase.WaitMe)
+        else 
         {
-            //对方回合反击
-            GOCardButton = Instantiate(counterButton) as GameObject;
-            GOCardButton.transform.position = Input.mousePosition;
-            GOCardButton.transform.parent = transform;
-            GOCardButton.GetComponent<ActionButton>().cardManager = this;
+            //弃牌
+            cardCurved.DestroyTheCard(handCardNo);
+
+            //如果处于我方弃牌阶段，判断是否还需弃牌
+            if (roundManager.roundPhase == RoundPhase.Abandonment && roundManager.isMyturn)
+            {
+                cardCurved.AbandonmentCard();
+            }
         }
     }
 
@@ -132,7 +151,7 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             StartCoroutine(InstantiateShowCard());
 
             //删除卡牌
-            GameObject.Find("HandCardPrefab").GetComponent<CardCurved>().DestroyTheCard(handCardNo);
+            cardCurved.DestroyTheCard(handCardNo);
         }
         else
         {

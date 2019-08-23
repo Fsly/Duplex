@@ -31,8 +31,14 @@ public class RoundStart : MonoBehaviour
             {
                 transform.DOScale(new Vector3(1, 0, 1), 0.2f).OnComplete(() =>
                 {
-                    if(roundManager.roundPhase==RoundPhase.Preparatory)
+                    if (roundManager.roundPhase == RoundPhase.Preparatory)
                         roundManager.DrawRoundStart();
+                    else if (roundManager.roundPhase == RoundPhase.Ending)
+                    {
+                        roundManager.isMyturn = !roundManager.isMyturn;
+                        roundManager.roundNum++;
+                        roundManager.PreparatoryRoundStart();
+                    }
 
                     Destroy(gameObject);
                 });

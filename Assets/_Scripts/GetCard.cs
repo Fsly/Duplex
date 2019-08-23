@@ -10,10 +10,11 @@ public class GetCard : MonoBehaviour
     float radian = 0;  // 弧度
     float perRadian = 0.08f; // 每次变化的弧度
     float radius = 10f; // 半径
-    Vector3 oldPos; // 开始时候的坐标
-    CardCurved cardCurved;//手牌管理
 
-    public RoundManager roundManager;//回合管理
+
+    private Vector3 oldPos; // 开始时候的坐标
+    private CardCurved cardCurved;//手牌管理
+    private RoundManager roundManager;//回合管理
 
     // Use this for initialization
     void Start()

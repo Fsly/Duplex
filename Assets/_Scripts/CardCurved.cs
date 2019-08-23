@@ -24,10 +24,17 @@ public class CardCurved : MonoBehaviour
     public GameObject TransBeginHandCard;  //生成手牌最开始的位置
     public float _FloRotateAngel; //手牌动画旋转的角度
 
+    public bool isAbandonment;//是否弃牌
+
+    private RoundManager roundManager;
+
     // Use this for initialization
     void Start()
     {
         NextCardNo = 0;
+        isAbandonment = false;
+
+        roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
     }
 
     // Update is called once per frame
@@ -199,7 +206,16 @@ public class CardCurved : MonoBehaviour
     //弃牌
     public void AbandonmentCard()
     {
-        print("弃牌");
+        if (ListHandCard.Count > 5)
+        {
+            isAbandonment = true;
+            print("还需弃 " + (ListHandCard.Count - 5) + " 张牌");
+        }
+        else
+        {
+            isAbandonment = false;
+            roundManager.EndingStart();
+        }
     }
 
     //测试用，随机生成一张游戏王手牌

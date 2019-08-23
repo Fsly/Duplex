@@ -10,7 +10,10 @@ public class RoundManager : MonoBehaviour
     //回合周期
     //背景
 
-    public GameObject StartUI;//开始的UI
+    public GameObject StartUI;//我方开始的UI
+    public GameObject EndingUI; //我方结束的UI
+    public GameObject EnemyStartUI;//对方开始的UI
+    public GameObject EnemyEndingUI;//对方结束的UI
     public GameObject getCardPrefabs;//抽牌预制体
     public GameObject waitPrefab; //等待预制体
     public GameObject NoCounterPrefab;//不出反击牌预制体
@@ -73,7 +76,6 @@ public class RoundManager : MonoBehaviour
         roundPhase = RoundPhase.Preparatory;
         waitCounter = WaitPhase.NoWait;
         roundNum = 1;
-        isMyturn = true;
 
         myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
@@ -85,7 +87,14 @@ public class RoundManager : MonoBehaviour
         roundPhase = RoundPhase.Preparatory;
 
         //回合开始动画
-        Instantiate(StartUI, MainCanvas);
+        if (isMyturn)
+        {
+            Instantiate(StartUI, MainCanvas);
+        }
+        else
+        {
+            Instantiate(EnemyStartUI, MainCanvas);
+        }
 
         //回复行动点
         myPlayer.ApGetToStart();
@@ -96,7 +105,10 @@ public class RoundManager : MonoBehaviour
     {
         roundPhase = RoundPhase.Draw;
 
-        Instantiate(getCardPrefabs, MainCanvas);
+        if (isMyturn)
+        {
+            Instantiate(getCardPrefabs, MainCanvas);
+        }
     }
 
     //主要阶段初始化
@@ -110,7 +122,28 @@ public class RoundManager : MonoBehaviour
     {
         roundPhase = RoundPhase.Abandonment;
 
-        cardCurved.AbandonmentCard();
+        if (isMyturn)
+        {
+            cardCurved.AbandonmentCard();
+        }
+    }
+
+    //结束阶段初始化
+    public void EndingStart()
+    {
+        roundPhase = RoundPhase.Ending;
+
+        //发动效果
+
+        //回合结束动画
+        if (isMyturn)
+        {
+            Instantiate(EndingUI, MainCanvas);
+        }
+        else
+        {
+            Instantiate(EnemyEndingUI, MainCanvas);
+        }
     }
 
     //等待对方，提示框出现

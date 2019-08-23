@@ -126,13 +126,15 @@ public class PlayerManager : MonoBehaviour
     //回复体力
     public void ApGetToStart()
     {
-        //如果是第一回合，双方抽牌，恢复体力
+        
         if (roundManager.roundNum == 1)
         {
+            //如果是第一回合，2体力
             ApChange(-1);
         }
         else
         {
+            //否则3体力
             if (AP == 0) ApChange(3);
             else if(AP == 1) ApChange(2);
             else if (AP == 2) ApChange(1);

@@ -39,7 +39,7 @@ public class HeroAwakeCurved : MonoBehaviour
     public bool meIsReady;
 
     
-    public bool decideWhoFrist;//由谁先开决定
+    public bool decideWhoFrist; //由谁先开决定
     public bool youFirst;//我方是否先开
 
     //洗牌后
@@ -79,7 +79,7 @@ public class HeroAwakeCurved : MonoBehaviour
             myPlayerManager.awake = myAwake;
             enemyPlayerManager.hero = enemyHero;
             enemyPlayerManager.awake = enemyAwake;
-           
+
             //英雄显示
             myPlayerManager.Init();
             enemyPlayerManager.Init();
@@ -91,6 +91,9 @@ public class HeroAwakeCurved : MonoBehaviour
             enemyUI.transform.DOMove(t_UI.position, 0.8f).SetEase(Ease.OutBack);
             t_UI = GameObject.Find("RoundOverButtonInit").transform;
             roundOverButton.transform.DOMove(t_UI.position, 0.8f).SetEase(Ease.OutBack);
+
+            if (youFirst) roundManager.isMyturn = true;
+            else roundManager.isMyturn = false;
 
             //启动回合
             roundManager.GameStartReady();
