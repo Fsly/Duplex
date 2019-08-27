@@ -55,6 +55,8 @@ public class ShowingCard : MonoBehaviour
         //出牌动画
         CardShowAnimation(GoShowCard.transform);
 
+        //消耗行动点
+        user.ApChange(-attackCard.ActionPoint);
 
         if (roundManager.isMyturn && roundManager.roundPhase == RoundPhase.Main && roundManager.waitCounter == WaitPhase.NoWait)
         {

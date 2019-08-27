@@ -31,6 +31,7 @@ public class RoundManager : MonoBehaviour
     public WaitPhase waitCounter; //是否等待反击
 
     public PlayerManager myPlayer;//我方玩家类
+    public PlayerManager EnemyPlayer;//对方玩家类
 
     private CardCurved cardCurved;
 
@@ -78,6 +79,7 @@ public class RoundManager : MonoBehaviour
         roundNum = 1;
 
         myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
+        EnemyPlayer = GameObject.Find("EnemyUI").GetComponent<PlayerManager>();
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
     }
 
@@ -86,18 +88,17 @@ public class RoundManager : MonoBehaviour
     {
         roundPhase = RoundPhase.Preparatory;
 
-        //回合开始动画
+        //回合开始动画,回复行动点
         if (isMyturn)
         {
             Instantiate(StartUI, MainCanvas);
+            myPlayer.ApGetToStart();
         }
         else
         {
             Instantiate(EnemyStartUI, MainCanvas);
+            EnemyPlayer.ApGetToStart();
         }
-
-        //回复行动点
-        myPlayer.ApGetToStart();
     }
 
     //抽牌阶段初始化
@@ -129,7 +130,7 @@ public class RoundManager : MonoBehaviour
     }
 
     //结束阶段初始化
-    public void EndingStart()
+    public void EndingRoundStart()
     {
         roundPhase = RoundPhase.Ending;
 

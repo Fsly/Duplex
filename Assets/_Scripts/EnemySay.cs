@@ -62,7 +62,32 @@ public class EnemySay : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             //对方打出第一张手牌
-            enemyHCurved.ListHandCard[0].GetComponent<EnemyCardManager>().UseCard();
+            if (roundManager.roundPhase == RoundPhase.Main)
+            {
+                enemyHCurved.ListHandCard[0].GetComponent<EnemyCardManager>().UseCard();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //对方准备阶段抽牌
+            enemyHCurved.HCNumChange(1);
+            roundManager.MainRoundStart();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //对方准备阶段抽牌
+            enemyHCurved.HCNumChange(1);
+            roundManager.MainRoundStart();
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            //对方结束
+            int i = enemyHCurved.ListHandCard.Count;
+            if (i > 5) enemyHCurved.HCNumChange(5 - i);
+            roundManager.EndingRoundStart();
         }
     }
 }

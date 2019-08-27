@@ -214,7 +214,7 @@ public class CardCurved : MonoBehaviour
         else
         {
             isAbandonment = false;
-            roundManager.EndingStart();
+            roundManager.EndingRoundStart();
         }
     }
 

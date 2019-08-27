@@ -63,6 +63,9 @@ public class EnemyShowCard : MonoBehaviour
         //出牌动画
         CardShowAnimation(GoShowCard.transform);
 
+        //消耗行动点
+        user.ApChange(-attackCard.ActionPoint);
+
         if (roundManager.isMyturn && roundManager.waitCounter == WaitPhase.WaitEnemy)
         {
             //反击

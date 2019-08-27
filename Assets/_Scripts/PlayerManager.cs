@@ -135,9 +135,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             //否则3体力
-            if (AP == 0) ApChange(3);
-            else if(AP == 1) ApChange(2);
-            else if (AP == 2) ApChange(1);
+            if (AP < 3) ApChange(3-AP);
         }
     }
 
