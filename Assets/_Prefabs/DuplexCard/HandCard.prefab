@@ -70,6 +70,7 @@ MonoBehaviour:
   handCardNo: 0
   showingCard: {fileID: 0}
   myPlayer: {fileID: 0}
+  cardCurved: {fileID: 0}
   apNotEnough: {fileID: 6324203205089366509, guid: c01b2c9fddbc2074d83273de3b43eee0,
     type: 3}
   mainCanvas: {fileID: 0}
@@ -216,7 +217,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 95722991b03738e44b942789851c9f33, type: 3}
-    m_FontSize: 42
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

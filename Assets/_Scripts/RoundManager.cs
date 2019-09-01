@@ -93,11 +93,13 @@ public class RoundManager : MonoBehaviour
         {
             Instantiate(StartUI, MainCanvas);
             myPlayer.ApGetToStart();
+            myPlayer.BurnDamageIn();
         }
         else
         {
             Instantiate(EnemyStartUI, MainCanvas);
             EnemyPlayer.ApGetToStart();
+            EnemyPlayer.BurnDamageIn();
         }
     }
 

@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 1307092790}
   - component: {fileID: 1307092789}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AllCardEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1186,6 +1186,9 @@ MonoBehaviour:
   attackCard: {fileID: 0}
   GoShowCard: {fileID: 0}
   roundManager: {fileID: 875789355}
+  noCounterCard: {fileID: 5571722027668358994, guid: 282e4d9f6472e3249b2d3bb84452ac9a,
+    type: 3}
+  enemyAttack: {fileID: 0}
 --- !u!1 &1555213787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1248,9 @@ MonoBehaviour:
     type: 3}
   GoShowCard: {fileID: 0}
   roundManager: {fileID: 875789355}
+  noCounterCard: {fileID: 5571722027668358994, guid: 282e4d9f6472e3249b2d3bb84452ac9a,
+    type: 3}
+  enemyAttack: {fileID: 0}
 --- !u!1 &1610168009 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8674024822771859498, guid: efc909fc558b120419bfdd6785771479,

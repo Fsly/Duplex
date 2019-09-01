@@ -24,6 +24,26 @@ public class ShowingCard : MonoBehaviour
 
     public RoundManager roundManager;
 
+    public CounterCard noCounterCard;//不打出反击牌
+
+    public AttackCard enemyAttack;
+
+    private CardEffect cardEffect;
+
+    private EnemyShowCard enemyShowCard;
+
+    private CardCurved cardCurved;//我方手牌
+
+    private EnemyHCurved enemyHCurved;//对方手牌
+
+    private void Start()
+    {
+        cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
+        enemyShowCard= GameObject.Find("EnemyShowCardParent").GetComponent<EnemyShowCard>();
+        cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
+        enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
+    }
+
     //出牌动画
     public void CardShowAnimation(Transform cardTransform)
     {
@@ -61,10 +81,33 @@ public class ShowingCard : MonoBehaviour
         if (roundManager.isMyturn && roundManager.roundPhase == RoundPhase.Main && roundManager.waitCounter == WaitPhase.NoWait)
         {
             //打出进攻卡
+
+
+            //进攻牌先行效果
+            switch (attackCard.attackCardNo)
+            {
+                case 2:
+                    //上挑
+                    enemyHCurved.RandomDestroyCard();
+                    break;
+                case 10:
+                    //流星雨
+                    break;
+            }
+
             if (attackCard.canCounter && enemy.AP != 0)
             {
-                //如果可以反击，等待对方反击
-                WaitForCounter();
+                //如果可以反击，传值并等待对方反击
+                if (!user.darkfire)
+                {
+                    enemyShowCard.enemyAttack = attackCard;
+                    WaitForCounter();
+                }
+            }
+            else
+            {
+                //不可反击直接判定
+                cardEffect.ActionEffect(attackCard, noCounterCard, true);
             }
         }
         else
@@ -72,6 +115,9 @@ public class ShowingCard : MonoBehaviour
             //打出反击卡
             print("我方反击");
             roundManager.MeWaitOK();
+
+            //判定
+            cardEffect.ActionEffect(enemyAttack, counterCard, false);
 
             GameObject.Find("NothingButton(Clone)").GetComponent<NotCounter>().BeDestroy();
         }

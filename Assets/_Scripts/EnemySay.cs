@@ -62,7 +62,11 @@ public class EnemySay : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             //对方打出第一张手牌
-            if (roundManager.roundPhase == RoundPhase.Main)
+            if (roundManager.roundPhase == RoundPhase.Main && !roundManager.isMyturn && roundManager.waitCounter != WaitPhase.WaitMe)
+            {
+                enemyHCurved.ListHandCard[0].GetComponent<EnemyCardManager>().UseCard();
+            }
+            else if (roundManager.waitCounter == WaitPhase.WaitEnemy)
             {
                 enemyHCurved.ListHandCard[0].GetComponent<EnemyCardManager>().UseCard();
             }

@@ -32,6 +32,11 @@ public class EnemyHCurved : MonoBehaviour
         {
             HCNumChange(-1);
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+
+            RandomDestroyCard();
+        }
     }
 
     //生成等量的手牌
@@ -77,5 +82,16 @@ public class EnemyHCurved : MonoBehaviour
                 return;
             }
         }
+    }
+
+    //随机弃牌
+    public void RandomDestroyCard()
+    {
+        int r = Random.Range(0, ListHandCard.Count);
+
+        Destroy(ListHandCard[r]);
+
+        //将删除的手牌从列表移除
+        ListHandCard.Remove(ListHandCard[r]);
     }
 }

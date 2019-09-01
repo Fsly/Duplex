@@ -24,6 +24,20 @@ public class EnemyShowCard : MonoBehaviour
 
     public RoundManager roundManager;
 
+    public CounterCard noCounterCard;//不打出反击牌
+
+    public AttackCard enemyAttack;
+
+    private CardEffect cardEffect;
+
+    private ShowingCard showingCard;
+
+    private void Start()
+    {
+        cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
+        showingCard= GameObject.Find("ShowCardParent").GetComponent<ShowingCard>();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
@@ -69,14 +83,29 @@ public class EnemyShowCard : MonoBehaviour
         if (roundManager.isMyturn && roundManager.waitCounter == WaitPhase.WaitEnemy)
         {
             //反击
+
+            //等待结束
             roundManager.EnemyWaitOK();
+
+            //判定
+            cardEffect.ActionEffect(enemyAttack, counterCard, true);
         }
         else
         {
             //进攻
             if (attackCard.canCounter && enemy.AP != 0)
             {
-                roundManager.WaitingMe();
+                //如果可以反击，传值并等待对方反击
+                if (!user.darkfire)
+                {
+                    showingCard.enemyAttack = attackCard;
+                    roundManager.WaitingMe();
+                }
+            }
+            else
+            {
+                //不可反击直接判定
+                cardEffect.ActionEffect(attackCard, noCounterCard, false);
             }
         }
     }

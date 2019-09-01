@@ -33,6 +33,15 @@ public class PlayerManager : MonoBehaviour
     private CardCurved cardCurved;
     public PlayerManager enemyPlayer;
 
+    //额外行动点
+    public int saveAp;
+
+    //燃烧伤害
+    public int burnDamage;
+
+    //黑炎仪式buff
+    public bool darkfire;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +91,10 @@ public class PlayerManager : MonoBehaviour
         roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
+
+        saveAp = 0;
+        burnDamage = 0;
+        darkfire = false;
     }
 
     //生命变化（数值改变，显示动画）
@@ -123,7 +136,7 @@ public class PlayerManager : MonoBehaviour
         else return true;
     }
 
-    //回复体力
+    //准备阶段回复体力
     public void ApGetToStart()
     {
         
@@ -136,6 +149,19 @@ public class PlayerManager : MonoBehaviour
         {
             //否则3体力
             if (AP < 3) ApChange(3-AP);
+        }
+        if (saveAp != 0)
+        {
+            ApChange(saveAp);
+            saveAp = 0;
+        }
+    }
+
+    public void BurnDamageIn()
+    {
+        if (burnDamage != 0)
+        {
+            HpChange(-burnDamage);
         }
     }
 

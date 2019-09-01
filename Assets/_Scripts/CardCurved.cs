@@ -56,6 +56,13 @@ public class CardCurved : MonoBehaviour
             DestroyLastCard();
             UseCardAnimation();
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+
+            //随机弃牌
+            RandomDestroyCard();
+        }
     }
 
 
@@ -201,6 +208,23 @@ public class CardCurved : MonoBehaviour
                 return;
             }
         }
+    }
+
+    //随机弃牌
+    public void RandomDestroyCard()
+    {
+        int r = Random.Range(0, ListHandCard.Count);
+
+        Destroy(ListHandCard[r]);
+
+        //将删除的手牌从列表移除
+        ListHandCard.Remove(ListHandCard[r]);
+
+        //计算动画需要旋转的角度
+        RotateAngel();
+
+        //使用手牌时播放的动画
+        UseCardAnimation();
     }
 
     //弃牌
