@@ -15,10 +15,17 @@ public class EnemyHCurved : MonoBehaviour
 
     public int NextCardNo;//下一张手牌的手牌号
 
+    public bool isAbandonment;//是否弃牌
+
+    private RoundManager roundManager;
+
     // Start is called before the first frame update
     void Start()
     {
         NextCardNo = 0;
+        isAbandonment = false;
+
+        roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
     }
 
     // Update is called once per frame
@@ -93,5 +100,20 @@ public class EnemyHCurved : MonoBehaviour
 
         //将删除的手牌从列表移除
         ListHandCard.Remove(ListHandCard[r]);
+    }
+
+    //弃牌
+    public void AbandonmentCard()
+    {
+        if (ListHandCard.Count > 5)
+        {
+            isAbandonment = true;
+            print("还需弃 " + (ListHandCard.Count - 5) + " 张牌");
+        }
+        else
+        {
+            isAbandonment = false;
+            roundManager.EndingRoundStart();
+        }
     }
 }

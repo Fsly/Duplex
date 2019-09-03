@@ -103,7 +103,7 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     //点击事件
     public void ButtonInstantiate()
     {
-        if (!cardCurved.isAbandonment)
+        if (!cardCurved.isAbandonment && !showingCard.delayAttack)
         {
             //使用牌
             //根据情况生成按钮
@@ -127,15 +127,25 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 GOCardButton.GetComponent<ActionButton>().cardManager = this;
             }
         }
-        else 
+        else
         {
             //弃牌
-            cardCurved.DestroyTheCard(handCardNo);
 
-            //如果处于我方弃牌阶段，判断是否还需弃牌
             if (roundManager.roundPhase == RoundPhase.Abandonment && roundManager.isMyturn)
             {
+                //处于我方弃牌阶段，保留5张，判断是否还需弃牌
+                cardCurved.DestroyTheCard(handCardNo);
                 cardCurved.AbandonmentCard();
+            }
+            else if (showingCard.delayAttack)
+            {
+                //流星雨弃牌中，最大弃3张，每张伤害+1
+                GameObject ballfireGO = GameObject.Find("FireBallOver(Clone)");
+                if (ballfireGO.GetComponent<FireBallFire>().addDamage < 3)
+                {
+                    cardCurved.DestroyTheCard(handCardNo);
+                    ballfireGO.GetComponent<FireBallFire>().AddtheDamage();
+                }
             }
         }
     }

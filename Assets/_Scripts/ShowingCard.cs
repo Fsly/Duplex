@@ -36,12 +36,18 @@ public class ShowingCard : MonoBehaviour
 
     private EnemyHCurved enemyHCurved;//对方手牌
 
+    public bool delayAttack;//延时判定流星雨
+
+    public GameObject FireballGO;
+
     private void Start()
     {
         cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
         enemyShowCard= GameObject.Find("EnemyShowCardParent").GetComponent<EnemyShowCard>();
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
+
+        delayAttack = false;
     }
 
     //出牌动画
@@ -61,7 +67,7 @@ public class ShowingCard : MonoBehaviour
         enemy.HpChange(-attackCard.Damage);
     }
 
-    //生成牌
+    //生成牌，出牌动画，先行效果
     public void InstantiateInit()
     {
         Destroy(GoShowCard);
@@ -92,22 +98,17 @@ public class ShowingCard : MonoBehaviour
                     break;
                 case 10:
                     //流星雨
+                    delayAttack = true;
+                    enemyShowCard.enemyAttack = attackCard;
+                    //生成发射按钮
+                    GameObject GOCardButton= Instantiate(FireballGO) as GameObject;
+                    GOCardButton.transform.parent = GameObject.Find("MiddleButtonInit").transform;
+                    GOCardButton.transform.position = GameObject.Find("MiddleButtonInit").transform.position;
                     break;
             }
-
-            if (attackCard.canCounter && enemy.AP != 0)
+            if (!delayAttack)
             {
-                //如果可以反击，传值并等待对方反击
-                if (!user.darkfire)
-                {
-                    enemyShowCard.enemyAttack = attackCard;
-                    WaitForCounter();
-                }
-            }
-            else
-            {
-                //不可反击直接判定
-                cardEffect.ActionEffect(attackCard, noCounterCard, true);
+                AttackAction();
             }
         }
         else
@@ -120,6 +121,25 @@ public class ShowingCard : MonoBehaviour
             cardEffect.ActionEffect(enemyAttack, counterCard, false);
 
             GameObject.Find("NothingButton(Clone)").GetComponent<NotCounter>().BeDestroy();
+        }
+    }
+
+    //进攻牌动作
+    public void AttackAction()
+    {
+        if (attackCard.canCounter)
+        {
+            //如果可以反击，传值并等待对方反击
+            if (!user.darkfire)
+            {
+                enemyShowCard.enemyAttack = attackCard;
+                WaitForCounter();
+            }
+        }
+        else
+        {
+            //不可反击直接判定
+            cardEffect.ActionEffect(attackCard, noCounterCard, true);
         }
     }
 

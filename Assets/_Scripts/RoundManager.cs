@@ -34,6 +34,7 @@ public class RoundManager : MonoBehaviour
     public PlayerManager EnemyPlayer;//对方玩家类
 
     private CardCurved cardCurved;
+    private EnemyHCurved enemyHCurved;
 
     private Vector3 waitFirstSet;
 
@@ -81,6 +82,7 @@ public class RoundManager : MonoBehaviour
         myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
         EnemyPlayer = GameObject.Find("EnemyUI").GetComponent<PlayerManager>();
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
+        enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
     }
 
     //准备阶段初始化
@@ -128,6 +130,10 @@ public class RoundManager : MonoBehaviour
         if (isMyturn)
         {
             cardCurved.AbandonmentCard();
+        }
+        else
+        {
+            enemyHCurved.AbandonmentCard();
         }
     }
 

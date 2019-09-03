@@ -32,10 +32,17 @@ public class EnemyShowCard : MonoBehaviour
 
     private ShowingCard showingCard;
 
+    private CardCurved cardCurved;//对方手牌
+
+    public bool delayAttack;//延时判定流星雨
+
     private void Start()
     {
         cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
         showingCard= GameObject.Find("ShowCardParent").GetComponent<ShowingCard>();
+        cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
+
+        delayAttack = false;
     }
 
     private void Update()
@@ -63,7 +70,7 @@ public class EnemyShowCard : MonoBehaviour
         enemy.HpChange(-attackCard.Damage);
     }
 
-    //生成牌，播放出牌动画
+    //生成牌，播放出牌动画，先行效果
     public void InstantiateInit()
     {
         Destroy(GoShowCard);
@@ -82,7 +89,7 @@ public class EnemyShowCard : MonoBehaviour
 
         if (roundManager.isMyturn && roundManager.waitCounter == WaitPhase.WaitEnemy)
         {
-            //反击
+            //打出反击卡
 
             //等待结束
             roundManager.EnemyWaitOK();
@@ -92,21 +99,44 @@ public class EnemyShowCard : MonoBehaviour
         }
         else
         {
-            //进攻
-            if (attackCard.canCounter && enemy.AP != 0)
+            //打出进攻卡
+
+            //进攻牌先行效果
+            switch (attackCard.attackCardNo)
             {
-                //如果可以反击，传值并等待对方反击
-                if (!user.darkfire)
-                {
+                case 2:
+                    //上挑
+                    cardCurved.RandomDestroyCard();
+                    break;
+                case 10:
+                    //流星雨
+                    delayAttack = true;
                     showingCard.enemyAttack = attackCard;
-                    roundManager.WaitingMe();
-                }
+                    break;
             }
-            else
+            if (!delayAttack)
             {
-                //不可反击直接判定
-                cardEffect.ActionEffect(attackCard, noCounterCard, false);
+                AttackAction();
             }
+        }
+    }
+
+    //进攻牌动作
+    public void AttackAction()
+    {
+        if (attackCard.canCounter)
+        {
+            //如果可以反击，传值并等待对方反击
+            if (!user.darkfire)
+            {
+                showingCard.enemyAttack = attackCard;
+                roundManager.WaitingMe();
+            }
+        }
+        else
+        {
+            //不可反击直接判定
+            cardEffect.ActionEffect(attackCard, noCounterCard, false);
         }
     }
 

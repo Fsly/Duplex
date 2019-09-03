@@ -22,10 +22,16 @@ public class EnemyCardManager : MonoBehaviour
     //卡面位置
     public Transform t_CardBack;
 
+    private RoundManager roundManager;
+
+    private EnemyHCurved enemyHCurved;
+
     // Start is called before the first frame update
     void Start()
     {
         showingCard = GameObject.Find("EnemyShowCardParent").GetComponent<EnemyShowCard>();
+        roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
+        enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
     }
 
     // Update is called once per frame
@@ -39,13 +45,35 @@ public class EnemyCardManager : MonoBehaviour
         t_CardBack.DOLocalMoveY(-20 , 0.2f);
     }
 
+    //使用卡，通过外界调用此函数实现打出
     public void UseCard()
     {
         //开启动画协程
         StartCoroutine(InstantiateShowCard());
 
         //删除卡牌
-        GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>().DestroyTheCard(handCardNo);
+        enemyHCurved.DestroyTheCard(handCardNo);
+    }
+
+    //弃牌
+    public void DestroyCard()
+    {
+        enemyHCurved.DestroyTheCard(handCardNo);
+
+        if (roundManager.roundPhase == RoundPhase.Abandonment && !roundManager.isMyturn)
+        {
+            //处于我方弃牌阶段，保留5张，判断是否还需弃牌
+            enemyHCurved.AbandonmentCard();
+        }
+        else if (showingCard.delayAttack)
+        {
+            //流星雨弃牌中，最大弃3张，每张伤害+1
+            GameObject ballfireGO = GameObject.Find("FireBallOver(Clone)");
+            if (ballfireGO.GetComponent<FireBallFire>().addDamage < 3)
+            {
+                ballfireGO.GetComponent<FireBallFire>().AddtheDamage();
+            }
+        }
     }
 
     IEnumerator InstantiateShowCard()
