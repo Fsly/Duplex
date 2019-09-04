@@ -21,11 +21,14 @@ public class FireBallFire : MonoBehaviour
         showingCard = GameObject.Find("ShowCardParent").GetComponent<ShowingCard>();
     }
 
+    //弃牌加伤害
     public void AddtheDamage()
     {
         addDamage++;
         damageText.text = "流星雨 +" + addDamage;
     }
+
+    //点击按钮发射
     public void Fire()
     {
         showingCard.attackCard.Damage += addDamage;

@@ -40,6 +40,8 @@ public class ShowingCard : MonoBehaviour
 
     public GameObject FireballGO;
 
+    public int addDamage;//附加伤害
+
     private void Start()
     {
         cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
@@ -48,6 +50,7 @@ public class ShowingCard : MonoBehaviour
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
 
         delayAttack = false;
+        addDamage = 0;
     }
 
     //出牌动画

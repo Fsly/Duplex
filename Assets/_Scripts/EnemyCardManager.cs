@@ -58,20 +58,21 @@ public class EnemyCardManager : MonoBehaviour
     //弃牌
     public void DestroyCard()
     {
-        enemyHCurved.DestroyTheCard(handCardNo);
-
         if (roundManager.roundPhase == RoundPhase.Abandonment && !roundManager.isMyturn)
         {
             //处于我方弃牌阶段，保留5张，判断是否还需弃牌
+
+            enemyHCurved.DestroyTheCard(handCardNo);
             enemyHCurved.AbandonmentCard();
         }
         else if (showingCard.delayAttack)
         {
             //流星雨弃牌中，最大弃3张，每张伤害+1
-            GameObject ballfireGO = GameObject.Find("FireBallOver(Clone)");
-            if (ballfireGO.GetComponent<FireBallFire>().addDamage < 3)
+
+            if (showingCard.addDamage < 3)
             {
-                ballfireGO.GetComponent<FireBallFire>().AddtheDamage();
+                enemyHCurved.DestroyTheCard(handCardNo);
+                showingCard.addDamage++;
             }
         }
     }

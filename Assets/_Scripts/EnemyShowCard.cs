@@ -36,6 +36,8 @@ public class EnemyShowCard : MonoBehaviour
 
     public bool delayAttack;//延时判定流星雨
 
+    public int addDamage;//附加伤害
+
     private void Start()
     {
         cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
@@ -43,6 +45,7 @@ public class EnemyShowCard : MonoBehaviour
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
 
         delayAttack = false;
+        addDamage = 0;
     }
 
     private void Update()
@@ -50,6 +53,15 @@ public class EnemyShowCard : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             InstantiateInit();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            //对方流星雨
+            attackCard.Damage += addDamage;
+            addDamage = 0;
+            showCardManager.init();
+            AttackAction();
+            delayAttack = false;
         }
     }
 
@@ -112,6 +124,7 @@ public class EnemyShowCard : MonoBehaviour
                     //流星雨
                     delayAttack = true;
                     showingCard.enemyAttack = attackCard;
+                    addDamage = 0;
                     break;
             }
             if (!delayAttack)
