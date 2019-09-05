@@ -7,8 +7,14 @@ public class NotCounter : MonoBehaviour
 {
     //不出反击牌按钮
 
+    public CounterCard noCounterCard;//不打出反击牌
+
     public RoundManager roundManager;
-    
+
+    public AttackCard enemyAttack;
+
+    private CardEffect cardEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +23,12 @@ public class NotCounter : MonoBehaviour
 
         //物体获取
         roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
+        cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
     }
 
     public void ButtonClick()
     {
-        print("不打出反击");
+        cardEffect.ActionEffect(enemyAttack, noCounterCard, false);
 
         roundManager.MeWaitOK();
 

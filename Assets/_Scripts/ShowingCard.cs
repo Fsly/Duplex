@@ -120,6 +120,8 @@ public class ShowingCard : MonoBehaviour
             print("我方反击");
             roundManager.MeWaitOK();
 
+            roundManager.WaitPrefabOn();
+
             //判定
             cardEffect.ActionEffect(enemyAttack, counterCard, false);
 
@@ -150,6 +152,7 @@ public class ShowingCard : MonoBehaviour
     public void WaitForCounter()
     {
         roundManager.WaitingEnemy();
+        roundManager.WaitPrefabOn();
     }
 
 }

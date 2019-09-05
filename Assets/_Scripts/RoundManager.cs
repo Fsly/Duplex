@@ -102,6 +102,7 @@ public class RoundManager : MonoBehaviour
             Instantiate(EnemyStartUI, MainCanvas);
             EnemyPlayer.ApGetToStart();
             EnemyPlayer.BurnDamageIn();
+            WaitPrefabOn();
         }
     }
 
@@ -152,23 +153,20 @@ public class RoundManager : MonoBehaviour
         else
         {
             Instantiate(EnemyEndingUI, MainCanvas);
+            WaitPrefabOff();
         }
     }
 
-    //等待对方，提示框出现
+    //等待对方
     public void WaitingEnemy()
     {
         waitCounter = WaitPhase.WaitEnemy;
-        waitFirstSet = waitPrefab.transform.position;
-        Transform t_UI = GameObject.Find("WaitInit").transform;
-        waitPrefab.transform.DOMove(t_UI.position, 0.8f).SetEase(Ease.OutBack);
     }
 
-    //等待结束，提示框隐藏
+    //等待结束
     public void EnemyWaitOK()
     {
         waitCounter = WaitPhase.NoWait;
-        waitPrefab.transform.DOMove(waitFirstSet, 0.8f).SetEase(Ease.OutBack);
     }
 
     //对方回合，等待我方打出反击牌
@@ -183,6 +181,20 @@ public class RoundManager : MonoBehaviour
     public void MeWaitOK()
     {
         waitCounter = WaitPhase.NoWait;
+    }
+
+    //"等待对方"提示框出现
+    public void WaitPrefabOn()
+    {
+        waitFirstSet = waitPrefab.transform.position;
+        Transform t_UI = GameObject.Find("WaitInit").transform;
+        waitPrefab.transform.DOMove(t_UI.position, 0.8f).SetEase(Ease.OutBack);
+    }
+
+    //"等待对方"提示框隐藏
+    public void WaitPrefabOff()
+    {
+        waitPrefab.transform.DOMove(waitFirstSet, 0.8f).SetEase(Ease.OutBack);
     }
 }
 

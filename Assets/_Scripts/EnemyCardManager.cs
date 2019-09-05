@@ -48,11 +48,13 @@ public class EnemyCardManager : MonoBehaviour
     //使用卡，通过外界调用此函数实现打出
     public void UseCard()
     {
-        //开启动画协程
-        StartCoroutine(InstantiateShowCard());
+        if (roundManager.waitCounter != WaitPhase.WaitMe && !showingCard.delayAttack) //开启动画协程
+        {
+            StartCoroutine(InstantiateShowCard());
 
-        //删除卡牌
-        enemyHCurved.DestroyTheCard(handCardNo);
+            //删除卡牌
+            enemyHCurved.DestroyTheCard(handCardNo);
+        }
     }
 
     //弃牌

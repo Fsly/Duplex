@@ -105,6 +105,7 @@ public class EnemyShowCard : MonoBehaviour
 
             //等待结束
             roundManager.EnemyWaitOK();
+            roundManager.WaitPrefabOff();
 
             //判定
             cardEffect.ActionEffect(enemyAttack, counterCard, true);
@@ -139,11 +140,14 @@ public class EnemyShowCard : MonoBehaviour
     {
         if (attackCard.canCounter)
         {
-            //如果可以反击，传值并等待对方反击
+             //如果可以反击，传值并等待对方反击
             if (!user.darkfire)
             {
-                showingCard.enemyAttack = attackCard;
                 roundManager.WaitingMe();
+                showingCard.enemyAttack = attackCard;
+                GameObject.Find("NothingButton(Clone)").GetComponent<NotCounter>().enemyAttack = attackCard;
+
+                roundManager.WaitPrefabOff();
             }
         }
         else

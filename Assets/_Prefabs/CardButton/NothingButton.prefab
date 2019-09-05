@@ -142,7 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa6521cb56a6cb479fcfc524ef19396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noCounterCard: {fileID: 5571722027668358994, guid: 282e4d9f6472e3249b2d3bb84452ac9a,
+    type: 3}
   roundManager: {fileID: 0}
+  enemyAttack: {fileID: 0}
 --- !u!1 &4471705234411009627
 GameObject:
   m_ObjectHideFlags: 0
