@@ -74,15 +74,7 @@ public class EnemyShowCard : MonoBehaviour
         cardTransform.DOMove(transform.position, 0.5f).SetEase(Ease.OutBack);
     }
 
-    //AP，HP计算,没计算反击，故废弃
-    public void HpApChange()
-    {
-        //我方HP减少，敌方AP减少
-        user.ApChange(-attackCard.ActionPoint);
-        enemy.HpChange(-attackCard.Damage);
-    }
-
-    //生成牌，播放出牌动画，先行效果
+    //生成牌，播放出牌动画，消耗行动点，先行效果
     public void InstantiateInit()
     {
         Destroy(GoShowCard);
@@ -97,9 +89,17 @@ public class EnemyShowCard : MonoBehaviour
         CardShowAnimation(GoShowCard.transform);
 
         //消耗行动点
-        user.ApChange(-attackCard.ActionPoint);
+        if (roundManager.isMyturn)
+        {
+            user.ApChange(-attackCard.ActionPoint);
+        }
+        else
+        {
+            user.ApChange(-counterCard.ActionPoint);
+        }
 
-        if (roundManager.isMyturn && roundManager.waitCounter == WaitPhase.WaitEnemy)
+        if (roundManager.isMyturn && 
+            roundManager.waitCounter == WaitPhase.WaitEnemy)
         {
             //打出反击卡
 
@@ -125,6 +125,7 @@ public class EnemyShowCard : MonoBehaviour
                     //流星雨
                     delayAttack = true;
                     showingCard.enemyAttack = attackCard;
+                    //额外伤害归零
                     addDamage = 0;
                     break;
             }

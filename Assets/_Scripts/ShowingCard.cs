@@ -62,15 +62,7 @@ public class ShowingCard : MonoBehaviour
         cardTransform.DOMove(transform.position, 0.5f).SetEase(Ease.OutBack);
     }
 
-    //AP，HP计算，没计算反击，故废弃
-    public void HpApChange()
-    {
-        //我方AP减少，敌方HP减少
-        user.ApChange(-attackCard.ActionPoint);
-        enemy.HpChange(-attackCard.Damage);
-    }
-
-    //生成牌，出牌动画，先行效果
+    //生成牌，出牌动画，消耗行动点，先行效果
     public void InstantiateInit()
     {
         Destroy(GoShowCard);
@@ -85,12 +77,20 @@ public class ShowingCard : MonoBehaviour
         CardShowAnimation(GoShowCard.transform);
 
         //消耗行动点
-        user.ApChange(-attackCard.ActionPoint);
+        if (roundManager.isMyturn)
+        {
+            user.ApChange(-attackCard.ActionPoint);
+        }
+        else
+        {
+            user.ApChange(-counterCard.ActionPoint);
+        }
 
-        if (roundManager.isMyturn && roundManager.roundPhase == RoundPhase.Main && roundManager.waitCounter == WaitPhase.NoWait)
+        if (roundManager.isMyturn && 
+            roundManager.roundPhase == RoundPhase.Main && 
+            roundManager.waitCounter == WaitPhase.NoWait)
         {
             //打出进攻卡
-
 
             //进攻牌先行效果
             switch (attackCard.attackCardNo)
@@ -103,7 +103,7 @@ public class ShowingCard : MonoBehaviour
                     //流星雨
                     delayAttack = true;
                     enemyShowCard.enemyAttack = attackCard;
-                    //生成发射按钮
+                    //生成发射按钮（按钮计算额外伤害）
                     GameObject GOCardButton= Instantiate(FireballGO) as GameObject;
                     GOCardButton.transform.parent = GameObject.Find("MiddleButtonInit").transform;
                     GOCardButton.transform.position = GameObject.Find("MiddleButtonInit").transform.position;
@@ -117,14 +117,15 @@ public class ShowingCard : MonoBehaviour
         else
         {
             //打出反击卡
-            print("我方反击");
-            roundManager.MeWaitOK();
 
+            //结束我方等待，等待对方回合
+            roundManager.MeWaitOK();
             roundManager.WaitPrefabOn();
 
             //判定
             cardEffect.ActionEffect(enemyAttack, counterCard, false);
 
+            //删除“不打出”按钮
             GameObject.Find("NothingButton(Clone)").GetComponent<NotCounter>().BeDestroy();
         }
     }
@@ -132,14 +133,11 @@ public class ShowingCard : MonoBehaviour
     //进攻牌动作
     public void AttackAction()
     {
-        if (attackCard.canCounter)
+        if (attackCard.canCounter&& !user.darkfire)
         {
-            //如果可以反击，传值并等待对方反击
-            if (!user.darkfire)
-            {
+            //如果可以反击并且没有黑炎buff，传值并等待对方反击
                 enemyShowCard.enemyAttack = attackCard;
                 WaitForCounter();
-            }
         }
         else
         {

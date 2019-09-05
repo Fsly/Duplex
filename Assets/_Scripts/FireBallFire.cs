@@ -35,5 +35,6 @@ public class FireBallFire : MonoBehaviour
         showingCard.showCardManager.init();
         showingCard.AttackAction();
         showingCard.delayAttack = false;
+        Destroy(gameObject);
     }
 }

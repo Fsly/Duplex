@@ -9,9 +9,9 @@ public class PlayerManager : MonoBehaviour
     //用于双方头像框UI
     //实现HP和AP动画（暂未）
 
-    public PlayerType type;//玩家类型
+    public PlayerType type; //玩家类型
 
-    public Hero hero;//选用的英雄
+    public Hero hero; //选用的英雄
     public Awake awake;//选用的觉醒
 
     public int HP; //当前HP

@@ -155,7 +155,11 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         //使用卡牌
 
         //判断AP是否够
-        if (myPlayer.IsApEnough(attackCard.ActionPoint))
+
+        if ((roundManager.isMyturn && 
+            myPlayer.IsApEnough(attackCard.ActionPoint)) || 
+            (!roundManager.isMyturn && 
+            myPlayer.IsApEnough(counterCard.ActionPoint)))
         {
             //开启动画协程
             StartCoroutine(InstantiateShowCard());
