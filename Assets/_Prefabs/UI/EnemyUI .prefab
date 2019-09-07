@@ -148,7 +148,11 @@ MonoBehaviour:
   APBar: {fileID: 3685824558791025364}
   heroHeadImage: {fileID: 3685824557899893316}
   ListAPBall: []
-  APBall: {fileID: 7077096457015502308, guid: 216cccf492a0613488beab7c84cb900b, type: 3}
+  APBall: {fileID: 2613120985283263522, guid: 2bea6c10510a85e4ca9b6ee6d719ec48, type: 3}
+  enemyPlayer: {fileID: 0}
+  saveAp: 0
+  burnDamage: 0
+  darkfire: 0
 --- !u!1 &3685824557841911705
 GameObject:
   m_ObjectHideFlags: 0

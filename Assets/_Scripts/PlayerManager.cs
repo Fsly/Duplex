@@ -117,14 +117,34 @@ public class PlayerManager : MonoBehaviour
                 GameObject GOAPBall = Instantiate(APBall) as GameObject;
                 GOAPBall.transform.parent = APBar.transform;
                 ListAPBall.Add(GOAPBall);
+                if (type == PlayerType.player2)
+                {
+                    GOAPBall.GetComponent<PointMask>().OnPointAdd();
+                }
+                else
+                {
+                    ListAPBall[0].GetComponent<PointMask>().OnPointAdd();
+                }
             }
         }
-        else if(addNum < 0)
+        else if (addNum < 0)
         {
             for (int i = 0; i < -addNum; i++)
             {
-                Destroy(ListAPBall[0]);
-                ListAPBall.Remove(ListAPBall[0]);
+                //Destroy(ListAPBall[0]);
+
+                if (type == PlayerType.player2)
+                {
+                    ListAPBall[ListAPBall.Count - 1].GetComponent<PointMask>().OnPointExit();
+
+                    ListAPBall.Remove(ListAPBall[ListAPBall.Count - 1]);
+                }
+                else
+                {
+                    ListAPBall[0].GetComponent<PointMask>().OnPointExit();
+
+                    ListAPBall.Remove(ListAPBall[0]);
+                }
             }
         }
     }

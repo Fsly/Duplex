@@ -40,6 +40,7 @@ public class EnemyCardManager : MonoBehaviour
 
     }
 
+    //进入动画
     public void EnterAnimation()
     {
         t_CardBack.DOLocalMoveY(-20 , 0.2f);
