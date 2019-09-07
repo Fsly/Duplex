@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class PlayerManager : MonoBehaviour
     public Slider HPSlider;
     public GameObject APBar;
     public Image heroHeadImage;
+
+    public Slider UpBar;
+    public Slider DownBar;
 
     public List<GameObject> ListAPBall = new List<GameObject>(); //AP显示列表 
 
@@ -100,9 +104,28 @@ public class PlayerManager : MonoBehaviour
     //生命变化（数值改变，显示动画）
     public void HpChange(int addNum)
     {
+        //数值改变
         HP += addNum;
+
+        //示数
         HPText.text = HP + "/" + hero.MaxHP;
-        if (HP >= 0) HPSlider.value = (float)HP / hero.MaxHP;
+
+        float ratio = (float)HP / hero.MaxHP;    //血量比例
+
+        //血条改变
+        if (addNum < 0)  // HP降低
+        {
+            UpBar.transform.localScale = Vector3.zero;             // 隐藏加血层
+            HPSlider.value = ratio;                                // 设置当前血量
+            DownBar.DOValue(ratio, 1);                             // 扣血层缓动缩放到当前血量
+        }
+        else if (addNum > 0)   // HP增加
+        {
+            UpBar.value = ratio;                                   // 设置加血层缩放
+            UpBar.transform.localScale =Vector3.one;               // 显示加血层
+            HPSlider.DOValue(ratio, 1);                            // 播放加血动画到当前血量
+        }
+
     }
 
     //行动点变化（数值改变，显示动画）
