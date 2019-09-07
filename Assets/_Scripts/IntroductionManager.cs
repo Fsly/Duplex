@@ -56,9 +56,9 @@ public class IntroductionManager : MonoBehaviour
         IntroductionAI.sprite = attackCard.attackSprite;
         IntroductionCI.sprite = counterCard.counterSprite;
         IntroductionAT.text = "卡名：" + attackCard.CardName + " " + attackCard.ActionPoint + "/" + attackCard.Damage
-            + "\n效果：" + attackCard.CardEffect + "\n介绍：" + attackCard.CardIntroduction;
+             + "\n介绍：" + attackCard.CardIntroduction + "\n效果：" + attackCard.CardEffect;
         IntroductionCT.text = "卡名：" + counterCard.CardName + " " + counterCard.ActionPoint
-            + "\n效果：" + counterCard.CardEffect + "\n介绍：" + counterCard.CardIntroduction;
+             + "\n介绍：" + counterCard.CardIntroduction + "\n效果：" + counterCard.CardEffect;
     }
 
 }

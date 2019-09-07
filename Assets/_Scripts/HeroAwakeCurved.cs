@@ -12,18 +12,18 @@ public class HeroAwakeCurved : MonoBehaviour
 
     //储存英雄和觉醒
     public List<Hero> heroes;//英雄牌
-    public List<Awake> awakes;//觉醒牌
+    public List<Awake> awakes; //觉醒牌
 
     //各3个预制体
-    public GameObject[] heroPrefab; //英雄牌预制体
+    public GameObject[] heroPrefab;  //英雄牌预制体
     public GameObject[] awakePrefab; //觉醒牌预制体
 
     //发牌位置
-    public Transform heroPrefabInit;//英雄牌发牌位置
+    public Transform heroPrefabInit; //英雄牌发牌位置
     public Transform awakePrefabInit;//觉醒牌发牌位置
 
     //选定位置
-    public Transform heroPrefabOver;//英雄牌选定位置
+    public Transform heroPrefabOver; //英雄牌选定位置
     public Transform awakePrefabOver;//觉醒牌选定位置
 
     //选号，未选为-1

@@ -106,6 +106,7 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (!cardCurved.isAbandonment && !showingCard.delayAttack)
         {
             //使用牌
+
             //根据情况生成按钮
             GameObject GOCardButton = null;
             if (roundManager.roundPhase == RoundPhase.Main

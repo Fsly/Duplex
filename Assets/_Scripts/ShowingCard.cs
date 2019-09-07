@@ -133,11 +133,11 @@ public class ShowingCard : MonoBehaviour
     //进攻牌动作
     public void AttackAction()
     {
-        if (attackCard.canCounter&& !user.darkfire)
+        if (attackCard.canCounter && !user.darkfire)
         {
             //如果可以反击并且没有黑炎buff，传值并等待对方反击
-                enemyShowCard.enemyAttack = attackCard;
-                WaitForCounter();
+            enemyShowCard.enemyAttack = attackCard;
+            WaitForCounter();
         }
         else
         {

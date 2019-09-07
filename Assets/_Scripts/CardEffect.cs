@@ -27,10 +27,10 @@ public class CardEffect : MonoBehaviour
         print(aCard.CardName + " " + cCard.CardName);
 
         int damage = aCard.Damage;//伤害
-        int backDamage = 0;//反击伤害
-        Attribute backAttribute = Attribute.Physical; //反击伤害类型
+        int backDamage = 0; //反击伤害
+        Attribute backAttribute = Attribute.Physical;  //反击伤害类型
 
-        PlayerManager user;//进攻方
+        PlayerManager user; //进攻方
         PlayerManager opposite; //反击方
 
         if (isMyAction)

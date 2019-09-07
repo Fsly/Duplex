@@ -10,10 +10,10 @@ public class RoundManager : MonoBehaviour
     //回合周期
     //背景
 
-    public GameObject StartUI;//我方开始的UI
+    public GameObject StartUI; //我方开始的UI
     public GameObject EndingUI; //我方结束的UI
     public GameObject EnemyStartUI;//对方开始的UI
-    public GameObject EnemyEndingUI;//对方结束的UI
+    public GameObject EnemyEndingUI; //对方结束的UI
     public GameObject getCardPrefabs;//抽牌预制体
     public GameObject waitPrefab; //等待预制体
     public GameObject NoCounterPrefab;//不出反击牌预制体
@@ -37,6 +37,8 @@ public class RoundManager : MonoBehaviour
     private EnemyHCurved enemyHCurved;
 
     private Vector3 waitFirstSet;
+
+   public Text RoundNumText;
 
     // Start is called before the first frame update
     void Start()
@@ -77,18 +79,24 @@ public class RoundManager : MonoBehaviour
     {
         roundPhase = RoundPhase.Preparatory;
         waitCounter = WaitPhase.NoWait;
-        roundNum = 1;
+        roundNum = 0;
 
         myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
         EnemyPlayer = GameObject.Find("EnemyUI").GetComponent<PlayerManager>();
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
+        RoundNumText = GameObject.Find("RoundNumText").GetComponent<Text>();
     }
 
     //准备阶段初始化
     public void PreparatoryRoundStart()
     {
         roundPhase = RoundPhase.Preparatory;
+
+        //回合增加，显示更新
+        roundNum++;
+        if (roundNum < 10) RoundNumText.text = "Round : 0" + roundNum;
+        else RoundNumText.text = "Round : " + roundNum;
 
         //回合开始动画,回复行动点
         if (isMyturn)

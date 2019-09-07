@@ -139,21 +139,19 @@ public class EnemyShowCard : MonoBehaviour
     //进攻牌动作
     public void AttackAction()
     {
-        if (attackCard.canCounter)
+        if (attackCard.canCounter && !user.darkfire)
         {
-             //如果可以反击，传值并等待对方反击
-            if (!user.darkfire)
-            {
-                roundManager.WaitingMe();
-                showingCard.enemyAttack = attackCard;
-                GameObject.Find("NothingButton(Clone)").GetComponent<NotCounter>().enemyAttack = attackCard;
+            // 如果可以反击并且没有黑炎buff，传值并等待对方反击
+            roundManager.WaitingMe();
+            roundManager.WaitPrefabOff();
+            showingCard.enemyAttack = attackCard;
 
-                roundManager.WaitPrefabOff();
-            }
+            // 不出牌按钮传值
+            GameObject.Find("NothingButton(Clone)").GetComponent<NotCounter>().enemyAttack = attackCard;
         }
         else
         {
-            //不可反击直接判定
+            // 不可反击直接判定
             cardEffect.ActionEffect(attackCard, noCounterCard, false);
         }
     }

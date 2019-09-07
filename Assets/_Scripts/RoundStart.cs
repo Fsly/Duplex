@@ -36,7 +36,6 @@ public class RoundStart : MonoBehaviour
                     else if (roundManager.roundPhase == RoundPhase.Ending)
                     {
                         roundManager.isMyturn = !roundManager.isMyturn;
-                        roundManager.roundNum++;
                         roundManager.PreparatoryRoundStart();
                     }
 

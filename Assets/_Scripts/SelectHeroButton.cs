@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SelectHeroButton : MonoBehaviour
 {
-    //选择按钮(起名失误注意：英雄卡和觉醒卡都使用)
-    //用于英雄卡和觉醒卡实例
-    //点击生成一个确定按钮
-    //向选择界面管理发送请求，选择此牌
+    // 选择按钮
+    // 用于英雄卡和觉醒卡实例
+    // 点击生成一个确定按钮
+    // 向选择界面管理发送请求，选择此牌
 
-    //点击事件标记（产生何种按钮，不影响功能）
+    // 点击事件标记（产生何种按钮，不影响功能）
     public HandCardButton cardButton;
 
     //预制体

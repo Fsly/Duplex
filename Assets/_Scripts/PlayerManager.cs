@@ -6,9 +6,9 @@ using DG.Tweening;
 
 public class PlayerManager : MonoBehaviour
 {
-    //玩家类
-    //用于双方头像框UI
-    //实现HP和AP动画（暂未）
+    // 玩家类
+    // 用于双方头像框UI
+    // 实现HP和AP缓动动画
 
     public PlayerType type; //玩家类型
 
