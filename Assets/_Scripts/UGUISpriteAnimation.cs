@@ -15,8 +15,10 @@ public class UGUISpriteAnimation : MonoBehaviour
     public List<Sprite> SpriteFrames;
     public bool IsPlaying = false;
     public bool Foward = true;
-    public bool AutoPlay = false;
+    public bool AutoPlay = true;
     public bool Loop = false;
+
+    public bool NSize = false;
 
     public int FrameCount
     {
@@ -46,8 +48,9 @@ public class UGUISpriteAnimation : MonoBehaviour
     private void SetSprite(int idx)
     {
         ImageSource.sprite = SpriteFrames[idx];
+
         //该部分为设置成原始图片大小，如果只需要显示Image设定好的图片大小，注释掉该行即可。
-        ImageSource.SetNativeSize();
+        if (NSize) ImageSource.SetNativeSize();
     }
 
     public void Play()
@@ -91,6 +94,10 @@ public class UGUISpriteAnimation : MonoBehaviour
                 else
                 {
                     IsPlaying = false;
+
+                    //手动加入，直接删除
+                    Destroy(gameObject);
+
                     return;
                 }
             }

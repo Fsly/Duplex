@@ -15,6 +15,9 @@ public class PlayerManager : MonoBehaviour
     public Hero hero; //选用的英雄
     public Awake awake;//选用的觉醒
 
+    //是否开启过觉醒
+    public bool isAwake; 
+
     public int HP; //当前HP
     public int AP; //当前AP
 
@@ -35,6 +38,8 @@ public class PlayerManager : MonoBehaviour
     private RoundManager roundManager;
     private EnemyHCurved enemyHCurved;
     private CardCurved cardCurved;
+    private Transform I_Hyp;
+
     public PlayerManager enemyPlayer;
 
     //额外行动点
@@ -95,10 +100,13 @@ public class PlayerManager : MonoBehaviour
         roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
+        I_Hyp = GameObject.Find("Hypovolemia").transform;
 
+        //初始值
         saveAp = 0;
         burnDamage = 0;
         darkfire = false;
+        isAwake = false;
     }
 
     //生命变化（数值改变，显示动画）
@@ -117,15 +125,24 @@ public class PlayerManager : MonoBehaviour
         {
             UpBar.transform.localScale = Vector3.zero;             // 隐藏加血层
             HPSlider.value = ratio;                                // 设置当前血量
-            DownBar.DOValue(ratio, 1);                             // 扣血层缓动缩放到当前血量
+            DownBar.DOValue(ratio, 1.5f);                          // 扣血层缓动缩放到当前血量
         }
         else if (addNum > 0)   // HP增加
         {
             UpBar.value = ratio;                                   // 设置加血层缩放
-            UpBar.transform.localScale =Vector3.one;               // 显示加血层
-            HPSlider.DOValue(ratio, 1);                            // 播放加血动画到当前血量
+            UpBar.transform.localScale = Vector3.one;              // 显示加血层
+            HPSlider.DOValue(ratio, 1.5f);                         // 播放加血动画到当前血量
         }
 
+        //我方血量低效果
+        if (type == PlayerType.player1 && HP < 4)
+        {
+            I_Hyp.localScale = Vector3.one;
+        }
+        else if (type == PlayerType.player1 && HP > 3)
+        {
+            I_Hyp.localScale = Vector3.zero;
+        }
     }
 
     //行动点变化（数值改变，显示动画）

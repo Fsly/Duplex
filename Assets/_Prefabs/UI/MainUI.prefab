@@ -481,6 +481,7 @@ MonoBehaviour:
   type: 0
   hero: {fileID: 8903456477509484125, guid: 83e0221656711734cac9b31b16dbaf04, type: 3}
   awake: {fileID: 1294990269325173812, guid: 9735ffaf77dd7534a9a3454869552156, type: 3}
+  isAwake: 0
   HP: 0
   AP: 0
   HPText: {fileID: 4013415372283479147}
@@ -506,6 +507,7 @@ GameObject:
   - component: {fileID: 4013415370965555281}
   - component: {fileID: 4013415370965555283}
   - component: {fileID: 4013415370965555280}
+  - component: {fileID: 3105846560975520493}
   m_Layer: 5
   m_Name: HeroHead
   m_TagString: Untagged
@@ -570,6 +572,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &3105846560975520493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013415370965555286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73be84859604f854fb937dc4300ab5b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerManager: {fileID: 4013415372708122153}
 --- !u!1 &4013415371145654483
 GameObject:
   m_ObjectHideFlags: 0

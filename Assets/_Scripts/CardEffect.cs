@@ -12,6 +12,10 @@ public class CardEffect : MonoBehaviour
     private CardCurved cardCurved;//我方手牌
     private EnemyHCurved enemyHCurved;//对方手牌
 
+    //0引爆紫色 1刺击 2上挑蓝色
+    public List<GameObject> effectGO;
+    public Transform enemyHeadPosition;
+    public Transform myHeadPosition;
 
     private void Start()
     {
@@ -32,16 +36,22 @@ public class CardEffect : MonoBehaviour
 
         PlayerManager user; //进攻方
         PlayerManager opposite; //反击方
+        Transform userHead; //进攻方动画播放位置
+        Transform oppositeHead;//反击方动画播放位置
 
         if (isMyAction)
         {
             user = myPlayer;
             opposite = enemyPlayer;
+            userHead = myHeadPosition;
+            oppositeHead = enemyHeadPosition;
         }
         else
         {
             user = enemyPlayer;
             opposite = myPlayer;
+            userHead = enemyHeadPosition;
+            oppositeHead = myHeadPosition;
         }
 
 
@@ -145,7 +155,29 @@ public class CardEffect : MonoBehaviour
                 break;
         }
 
+        //播放进攻牌动画
+        switch (aCard.attackCardNo)
+        {
+            case 2:
+                ShowEffect(effectGO[2], oppositeHead);
+                break;
+            case 3:
+                ShowEffect(effectGO[0], oppositeHead);
+                break;
+            case 6:
+                ShowEffect(effectGO[1], oppositeHead);
+                break;
+        }
+
         user.HpChange(-backDamage);
         opposite.HpChange(-damage);
+    }
+
+    //播放特效
+    private void ShowEffect(GameObject effect, Transform site)
+    {
+        GameObject texiao = Instantiate(effect) as GameObject;
+        texiao.transform.position = site.position;
+        texiao.transform.parent = site;
     }
 }

@@ -325,6 +325,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!224 &720619129 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3685824558972304197, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
+    type: 3}
+  m_PrefabInstance: {fileID: 1002144805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &769672630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -451,11 +457,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3335428301949488101, guid: 0998b6dd45a3b954fadbb291a92afb77,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 2.8849945
       objectReference: {fileID: 0}
     - target: {fileID: 3335428301949488101, guid: 0998b6dd45a3b954fadbb291a92afb77,
         type: 3}
@@ -644,6 +645,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892568485}
   m_CullTransparentMesh: 0
+--- !u!224 &945499856 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4013415371703373490, guid: 0998b6dd45a3b954fadbb291a92afb77,
+    type: 3}
+  m_PrefabInstance: {fileID: 769672630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &957663814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3685824557724140008, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
@@ -793,11 +800,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8205195408419392204, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -2.8849945
-      objectReference: {fileID: 0}
     - target: {fileID: 1199963763034289217, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -807,11 +809,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199963763034289217, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -2.8849945
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66d00d5cfa4b0c74999e543c5b7c7f47, type: 3}
@@ -1044,6 +1041,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eca0953665ea9c4eb0100394bef4dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectGO:
+  - {fileID: 663803006300084982, guid: 7583f6aadb133094ea2b49d46e0e62bf, type: 3}
+  - {fileID: 8099672117963860871, guid: b519e267d9c4108469a78f11490762ea, type: 3}
+  - {fileID: 1340265486966162709, guid: 450549b0ac37a2a428883e7dfdffb27d, type: 3}
+  enemyHeadPosition: {fileID: 720619129}
+  myHeadPosition: {fileID: 945499856}
 --- !u!4 &1307092790
 Transform:
   m_ObjectHideFlags: 0
@@ -1358,12 +1361,12 @@ GameObject:
   - component: {fileID: 2127209169}
   - component: {fileID: 2127209168}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hypovolemia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2127209167
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1373,7 +1376,7 @@ RectTransform:
   m_GameObject: {fileID: 2127209166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 571074748}
   m_RootOrder: 1
