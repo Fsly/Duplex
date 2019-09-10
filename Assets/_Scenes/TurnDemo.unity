@@ -325,11 +325,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!224 &720619129 stripped
+--- !u!224 &651422852 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3685824558972304197, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
+  m_CorrespondingSourceObject: {fileID: 1792711368645384712, guid: 0998b6dd45a3b954fadbb291a92afb77,
     type: 3}
-  m_PrefabInstance: {fileID: 1002144805}
+  m_PrefabInstance: {fileID: 769672630}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &769672630
 PrefabInstance:
@@ -480,6 +480,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0998b6dd45a3b954fadbb291a92afb77, type: 3}
+--- !u!224 &805955970 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 471009440998105162, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
+    type: 3}
+  m_PrefabInstance: {fileID: 1002144805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &875789354
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,12 +651,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892568485}
   m_CullTransparentMesh: 0
---- !u!224 &945499856 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4013415371703373490, guid: 0998b6dd45a3b954fadbb291a92afb77,
-    type: 3}
-  m_PrefabInstance: {fileID: 769672630}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &957663814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3685824557724140008, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
@@ -1041,12 +1041,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eca0953665ea9c4eb0100394bef4dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectGO:
-  - {fileID: 663803006300084982, guid: 7583f6aadb133094ea2b49d46e0e62bf, type: 3}
-  - {fileID: 8099672117963860871, guid: b519e267d9c4108469a78f11490762ea, type: 3}
-  - {fileID: 1340265486966162709, guid: 450549b0ac37a2a428883e7dfdffb27d, type: 3}
-  enemyHeadPosition: {fileID: 720619129}
-  myHeadPosition: {fileID: 945499856}
+  effect_A:
+  - {fileID: 2067514252606242862, guid: f537e0502b1e82849ac2dff7446c17a1, type: 3}
+  - {fileID: 8210299192718173757, guid: 7b9d0541622b34a4a9a09a3ea79e8231, type: 3}
+  - {fileID: 2703598846855073400, guid: 62579ff203b026d4282d7ba0cb041528, type: 3}
+  - {fileID: 7114999536064741103, guid: 93dfc2fab9edfa24880cbb3b32e153bf, type: 3}
+  - {fileID: 264851004961156876, guid: ddc041f37605f06449a89b4aae2ae004, type: 3}
+  - {fileID: 1000872748434748275, guid: 448b6fb829775e64d9256c78e11d9538, type: 3}
+  - {fileID: 4981793028429317907, guid: e655c3a8b40c1e14591e476fa2df8be0, type: 3}
+  - {fileID: 1785609503507612000, guid: c7b635b46cacdec40a476728089e2aa2, type: 3}
+  - {fileID: 2113165862796891822, guid: 580948a26905f2242b5402c8cc77c6db, type: 3}
+  - {fileID: 301123343239194620, guid: 9c4ce1ded733bf34d8da5994d1ff0534, type: 3}
+  - {fileID: 7082023305109689919, guid: e6fa6ec2f0ea49b4f8307598a0720f70, type: 3}
+  - {fileID: 2941151725607677493, guid: e4890631d79b302448216281561adb08, type: 3}
+  - {fileID: 4444022568230394700, guid: c8814d403650aab4ea03423fc61ebe4e, type: 3}
+  - {fileID: 5538250245233651742, guid: a1df827f39ebd8b48ae782713123a93e, type: 3}
+  - {fileID: 2283499519038518567, guid: e6f15f6d4fa2c8e41abea1d1a56ed2ce, type: 3}
+  - {fileID: 2485595269868664388, guid: 8d256554907a33e43a42ba917a32fb2d, type: 3}
+  effect_C:
+  - {fileID: 1007366593974162482, guid: 6716de1ce5e765d4687203ee794f8a69, type: 3}
+  - {fileID: 2498190774532017267, guid: 7debae79642ec7b46bf6ffc5c712561b, type: 3}
+  - {fileID: 7235364465550561514, guid: d9bbc385b281f3744b3ad432ca9b3f1d, type: 3}
+  - {fileID: 7998267834752918542, guid: 202fbf91d15ed88439c5e41c15affa46, type: 3}
+  - {fileID: 4204766032327636925, guid: b4b80a7e1d7e96b43aaccd10b5991e8f, type: 3}
+  - {fileID: 9087419857635582743, guid: f442f40f58f17cd4485a496e722ec11f, type: 3}
+  - {fileID: 8004874035805877082, guid: 15f5547c39e135b4f9b01623e7d67dc4, type: 3}
+  - {fileID: 2653449557148265196, guid: 4a4a0d7e6c013374a978da959d7285f3, type: 3}
+  enemyHeadPosition: {fileID: 805955970}
+  myHeadPosition: {fileID: 651422852}
 --- !u!4 &1307092790
 Transform:
   m_ObjectHideFlags: 0

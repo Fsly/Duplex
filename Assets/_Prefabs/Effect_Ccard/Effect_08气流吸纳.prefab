@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2653449557148265196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2653449557148265197}
+  - component: {fileID: 2653449557148265184}
+  - component: {fileID: 2653449557148265199}
+  - component: {fileID: 2653449557148265198}
+  m_Layer: 5
+  m_Name: "Effect_08\u6C14\u6D41\u5438\u7EB3"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2653449557148265197
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653449557148265196}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 360.5, y: 26.5}
+  m_SizeDelta: {x: 133.4, y: 133.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2653449557148265184
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653449557148265196}
+  m_CullTransparentMesh: 0
+--- !u!114 &2653449557148265199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653449557148265196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e7cc945306094e34eb8e2834cfc76242, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!114 &2653449557148265198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653449557148265196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170c61846b677e9499e7c8a23af977bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPS: 10
+  SpriteFrames:
+  - {fileID: 21300000, guid: e7cc945306094e34eb8e2834cfc76242, type: 3}
+  - {fileID: 21300000, guid: ca28ebcdc20c1534c98b505ff79e1953, type: 3}
+  - {fileID: 21300000, guid: e5d3178985898344e9768da290c3be0a, type: 3}
+  - {fileID: 21300000, guid: 5f3a7aa1e5a7e874a8e177f718bb45f6, type: 3}
+  - {fileID: 21300000, guid: 4eb713f48e125674fbeda662c2950131, type: 3}
+  - {fileID: 21300000, guid: d2d0ae6d7d9006a4cb46306be39c11d1, type: 3}
+  - {fileID: 21300000, guid: c3721ded4a301f44883b7c380a2f3bf0, type: 3}
+  - {fileID: 21300000, guid: 9436c36301976384b8eaddd089f23361, type: 3}
+  - {fileID: 21300000, guid: 5800dcab493958a4aa50733ab5f431fe, type: 3}
+  - {fileID: 21300000, guid: 9fb4d7a5c7bffe64cbcad75d484bfa91, type: 3}
+  - {fileID: 21300000, guid: 0b67630239ac5254a8341f975d4c98d7, type: 3}
+  - {fileID: 21300000, guid: 366f6dcac6a37c5439f18312a63200bc, type: 3}
+  - {fileID: 21300000, guid: 3bbd5a360e5ca1540b994cd89fd0eb05, type: 3}
+  - {fileID: 21300000, guid: 593b949bb9d4660499d2876386b2ffb7, type: 3}
+  - {fileID: 21300000, guid: fc02927ca72cd284bae50d29b4bef4cd, type: 3}
+  - {fileID: 21300000, guid: 378b035cd4ec5b340aee60cdcf76676a, type: 3}
+  IsPlaying: 0
+  Foward: 1
+  AutoPlay: 1
+  Loop: 1
+  NSize: 0

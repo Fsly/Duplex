@@ -12,8 +12,9 @@ public class CardEffect : MonoBehaviour
     private CardCurved cardCurved;//我方手牌
     private EnemyHCurved enemyHCurved;//对方手牌
 
-    //0引爆紫色 1刺击 2上挑蓝色
-    public List<GameObject> effectGO;
+    
+    public List<GameObject> effect_A;
+    public List<GameObject> effect_C;
     public Transform enemyHeadPosition;
     public Transform myHeadPosition;
 
@@ -38,6 +39,8 @@ public class CardEffect : MonoBehaviour
         PlayerManager opposite; //反击方
         Transform userHead; //进攻方动画播放位置
         Transform oppositeHead;//反击方动画播放位置
+
+        float r_miss = 0; //闪避值，超过500闪避成功
 
         if (isMyAction)
         {
@@ -138,8 +141,8 @@ public class CardEffect : MonoBehaviour
                 break;
             case 3:
                 //闪避
-                float r = Random.Range(0, 1000f);
-                if (r < 500)
+                r_miss = Random.Range(0, 1000f);
+                if (r_miss > 500)
                 {
                     damage = 0;
                 }
@@ -155,19 +158,27 @@ public class CardEffect : MonoBehaviour
                 break;
         }
 
-        //播放进攻牌动画
-        switch (aCard.attackCardNo)
+        if (r_miss > 500)
         {
-            case 2:
-                ShowEffect(effectGO[2], oppositeHead);
-                break;
-            case 3:
-                ShowEffect(effectGO[0], oppositeHead);
-                break;
-            case 6:
-                ShowEffect(effectGO[1], oppositeHead);
-                break;
+            //闪避
+            ShowEffect(effect_C[2], userHead);
         }
+        else
+        {
+            //播放进攻牌动画
+            switch (aCard.attackCardNo)
+            {
+                case 1:
+                    float r_color = Random.Range(0, 1000f);
+                    if (r_color < 200) ShowEffect(effect_A[0], oppositeHead);
+                    else if (r_color < 400) ShowEffect(effect_A[1], oppositeHead);
+                    else if (r_color < 600) ShowEffect(effect_A[2], oppositeHead);
+                    else if (r_color < 800) ShowEffect(effect_A[3], oppositeHead);
+                    else ShowEffect(effect_A[4], oppositeHead);
+                    break;
+            }
+        }
+        
 
         user.HpChange(-backDamage);
         opposite.HpChange(-damage);
@@ -177,6 +188,7 @@ public class CardEffect : MonoBehaviour
     private void ShowEffect(GameObject effect, Transform site)
     {
         GameObject texiao = Instantiate(effect) as GameObject;
+        texiao.GetComponent<UGUISpriteAnimation>().Loop = false;
         texiao.transform.position = site.position;
         texiao.transform.parent = site;
     }

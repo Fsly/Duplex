@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8004874035805877082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8004874035805877083}
+  - component: {fileID: 8004874035805877062}
+  - component: {fileID: 8004874035805877081}
+  - component: {fileID: 8004874035805877080}
+  m_Layer: 5
+  m_Name: "Effect_07\u505C\u6218\u53F7\u4EE4"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8004874035805877083
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8004874035805877082}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 227.09991, y: 26.5}
+  m_SizeDelta: {x: 133.4, y: 133.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8004874035805877062
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8004874035805877082}
+  m_CullTransparentMesh: 0
+--- !u!114 &8004874035805877081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8004874035805877082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e7e8ddf146b3cfe4aa4d243fc79295c6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!114 &8004874035805877080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8004874035805877082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170c61846b677e9499e7c8a23af977bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPS: 10
+  SpriteFrames:
+  - {fileID: 21300000, guid: e7e8ddf146b3cfe4aa4d243fc79295c6, type: 3}
+  - {fileID: 21300000, guid: c0b48c50f220bfa44b22c244acd31270, type: 3}
+  - {fileID: 21300000, guid: 986c183db2e049343b4be8c336d8a237, type: 3}
+  - {fileID: 21300000, guid: bbafb3acfc34d1e4795bfa76323cc416, type: 3}
+  - {fileID: 21300000, guid: 480298beb4c4eda4eaba64a260d853a2, type: 3}
+  - {fileID: 21300000, guid: 5f62d77c444b5da418ebf01518aaa5de, type: 3}
+  - {fileID: 21300000, guid: 3e9d30f2745a51044b6c344e8a0a7139, type: 3}
+  - {fileID: 21300000, guid: 5640e2eec197d694fb6673e5c8221228, type: 3}
+  - {fileID: 21300000, guid: b18a8fd950f64a142af14043b20dbbb1, type: 3}
+  - {fileID: 21300000, guid: 7016510c0c683fb4a90f3edb3e33516d, type: 3}
+  - {fileID: 21300000, guid: b77feabd06b34804ab85b93c82ba9e75, type: 3}
+  - {fileID: 21300000, guid: a18a4b73276cba84488dfca33a13f081, type: 3}
+  - {fileID: 21300000, guid: ccb5da8592d846a4da4db0c825b2cf52, type: 3}
+  - {fileID: 21300000, guid: a09274f9ede3f2b41b4384cea2935293, type: 3}
+  - {fileID: 21300000, guid: 2e20ad0c3a8798748828d7f0467ac200, type: 3}
+  - {fileID: 21300000, guid: c03ec928c9bb8fc4daa67159afa31efa, type: 3}
+  - {fileID: 21300000, guid: c1d356ad76c2deb45ab09f6a62c2fa2d, type: 3}
+  - {fileID: 21300000, guid: 6892279f5301e0647aca7ce4b2abff35, type: 3}
+  - {fileID: 21300000, guid: a36c1747cca58f5428a8c7aa78fac7ad, type: 3}
+  IsPlaying: 0
+  Foward: 1
+  AutoPlay: 1
+  Loop: 1
+  NSize: 0
