@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviour
     private EnemyHCurved enemyHCurved;
     private CardCurved cardCurved;
     private Transform I_Hyp;
+    private CardEffect cardEffect;
 
     public PlayerManager enemyPlayer;
 
@@ -101,6 +102,7 @@ public class PlayerManager : MonoBehaviour
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
         I_Hyp = GameObject.Find("Hypovolemia").transform;
+        cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
 
         //初始值
         saveAp = 0;
@@ -222,6 +224,7 @@ public class PlayerManager : MonoBehaviour
         if (burnDamage != 0)
         {
             HpChange(-burnDamage);
+            cardEffect.TakeBurn(type == PlayerType.player1);
         }
     }
 

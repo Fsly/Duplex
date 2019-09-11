@@ -20,6 +20,9 @@ public class UGUISpriteAnimation : MonoBehaviour
 
     public bool NSize = false;
 
+
+    private CardEffect cardEffect;
+
     public int FrameCount
     {
         get
@@ -43,6 +46,8 @@ public class UGUISpriteAnimation : MonoBehaviour
         {
             IsPlaying = false;
         }
+
+        cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
     }
 
     private void SetSprite(int idx)
@@ -96,6 +101,11 @@ public class UGUISpriteAnimation : MonoBehaviour
                     IsPlaying = false;
 
                     //手动加入，直接删除
+                    if (cardEffect.attackJustOver)
+                    {
+                        cardEffect.attackJustOver = false;
+                        cardEffect.EffectCounter();
+                    }
                     Destroy(gameObject);
 
                     return;

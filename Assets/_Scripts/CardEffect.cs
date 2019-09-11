@@ -18,6 +18,11 @@ public class CardEffect : MonoBehaviour
     public Transform enemyHeadPosition;
     public Transform myHeadPosition;
 
+    //用于在攻击动画结束后播放反击动画
+    public bool attackJustOver;
+    private int effect_cCard;
+    private bool effect_isMyAction;
+
     private void Start()
     {
         myPlayer = GameObject.Find("MainUI").GetComponent<PlayerManager>();
@@ -25,6 +30,8 @@ public class CardEffect : MonoBehaviour
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
         roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
+
+        attackJustOver = false;
     }
 
     public void ActionEffect(AttackCard aCard, CounterCard cCard, bool isMyAction)
@@ -165,7 +172,7 @@ public class CardEffect : MonoBehaviour
         }
         else
         {
-            //播放进攻牌动画
+            //没有闪避，播放进攻牌动画
             switch (aCard.attackCardNo)
             {
                 case 1:
@@ -176,7 +183,37 @@ public class CardEffect : MonoBehaviour
                     else if (r_color < 800) ShowEffect(effect_A[3], oppositeHead);
                     else ShowEffect(effect_A[4], oppositeHead);
                     break;
+                case 2:
+                    ShowEffect(effect_A[5], oppositeHead);
+                    break;
+                case 3:
+                    ShowEffect(effect_A[6], oppositeHead);
+                    break;
+                case 4:
+                    ShowEffect(effect_A[7], oppositeHead);
+                    break;
+                case 5:
+                    ShowEffect(effect_A[9], userHead);
+                    break;
+                case 6:
+                    ShowEffect(effect_A[10], oppositeHead);
+                    break;
+                case 7:
+                    ShowEffect(effect_A[11], oppositeHead);
+                    break;
+                case 8:
+                    ShowEffect(effect_A[12], oppositeHead);
+                    break;
+                case 9:
+                    ShowEffect(effect_A[13], userHead);
+                    break;
+                case 10:
+                    ShowEffect(effect_A[14], oppositeHead);
+                    break;
             }
+            attackJustOver = true;
+            effect_cCard = cCard.counterCardNo;
+            effect_isMyAction = isMyAction;
         }
         
 
@@ -191,5 +228,61 @@ public class CardEffect : MonoBehaviour
         texiao.GetComponent<UGUISpriteAnimation>().Loop = false;
         texiao.transform.position = site.position;
         texiao.transform.parent = site;
+    }
+
+    public void TakeBurn(bool isMyTurn)
+    {
+        if (isMyTurn)
+        {
+            ShowEffect(effect_A[8], myHeadPosition);
+        }
+        else
+        {
+            ShowEffect(effect_A[8], enemyHeadPosition);
+        }
+    }
+
+    //在进攻动画播放后播放反击动画
+    public void EffectCounter()
+    {
+
+        Transform userHead; //进攻方动画播放位置
+        Transform oppositeHead;//反击方动画播放位置
+
+        if (effect_isMyAction)
+        {
+            userHead = myHeadPosition;
+            oppositeHead = enemyHeadPosition;
+        }
+        else
+        {
+            userHead = enemyHeadPosition;
+            oppositeHead = myHeadPosition;
+        }
+
+        switch (effect_cCard)
+        {
+            case 1:
+                ShowEffect(effect_C[0], oppositeHead);
+                break;
+            case 2:
+                ShowEffect(effect_C[1], oppositeHead);
+                break;
+            case 4:
+                ShowEffect(effect_C[3], userHead);
+                break;
+            case 5:
+                ShowEffect(effect_C[4], oppositeHead);
+                break;
+            case 6:
+                ShowEffect(effect_C[5], userHead);
+                break;
+            case 7:
+                ShowEffect(effect_C[6], oppositeHead);
+                break;
+            case 8:
+                ShowEffect(effect_C[7], oppositeHead);
+                break;
+        }
     }
 }
