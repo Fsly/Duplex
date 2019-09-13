@@ -272,10 +272,10 @@ public class CardEffect : MonoBehaviour
                 ShowEffect(effect_C[3], userHead);
                 break;
             case 5:
-                ShowEffect(effect_C[4], oppositeHead);
+                ShowEffect(effect_C[4], userHead);
                 break;
             case 6:
-                ShowEffect(effect_C[5], userHead);
+                ShowEffect(effect_C[5], oppositeHead);
                 break;
             case 7:
                 ShowEffect(effect_C[6], oppositeHead);
