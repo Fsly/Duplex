@@ -18,6 +18,7 @@ public class RoundManager : MonoBehaviour
     public GameObject waitPrefab; //等待预制体
     public GameObject NoCounterPrefab;//不出反击牌预制体
     public Transform MainCanvas;//主画布
+    public GameObject discardTipPrefab; //弃牌数提示框
 
     //背景管理
     public Sprite[] BgSprite;
@@ -138,6 +139,7 @@ public class RoundManager : MonoBehaviour
 
         if (isMyturn)
         {
+            Instantiate(discardTipPrefab, MainCanvas); 
             cardCurved.AbandonmentCard();
         }
         else

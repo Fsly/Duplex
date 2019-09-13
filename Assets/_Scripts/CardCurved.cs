@@ -233,10 +233,12 @@ public class CardCurved : MonoBehaviour
         if (ListHandCard.Count > 5)
         {
             isAbandonment = true;
+            GameObject.Find("DiscardText").GetComponent<Text>().text = "请弃牌，还需弃 " + (ListHandCard.Count - 5) + " 张牌";
             print("还需弃 " + (ListHandCard.Count - 5) + " 张牌");
         }
         else
         {
+            Destroy(GameObject.Find("DiscardTips(Clone)"));
             isAbandonment = false;
             roundManager.EndingRoundStart();
         }

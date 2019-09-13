@@ -528,6 +528,8 @@ MonoBehaviour:
   NoCounterPrefab: {fileID: 4471705234083951269, guid: 636b3903bfb3b814e82fe80aff93f92b,
     type: 3}
   MainCanvas: {fileID: 571074748}
+  discardTipPrefab: {fileID: 644743812997054016, guid: 4be118f839af57442946acedeb1f9573,
+    type: 3}
   BgSprite:
   - {fileID: 21300000, guid: 82bfc9d6843967a4abf320ae292959ef, type: 3}
   - {fileID: 21300000, guid: 1874da0da845783498c8ee3198adea6e, type: 3}
@@ -1069,6 +1071,7 @@ MonoBehaviour:
   - {fileID: 2653449557148265196, guid: 4a4a0d7e6c013374a978da959d7285f3, type: 3}
   enemyHeadPosition: {fileID: 805955970}
   myHeadPosition: {fileID: 651422852}
+  attackJustOver: 0
 --- !u!4 &1307092790
 Transform:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using DG.Tweening;
 public class RoundStart : MonoBehaviour
 {
     //回合开始动画
+    //其他屏幕中间弹出框也使用
 
     public float keepTime = 0.5f;
     public float destroyTime = 1.0f;
