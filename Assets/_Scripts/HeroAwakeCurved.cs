@@ -58,6 +58,7 @@ public class HeroAwakeCurved : MonoBehaviour
     private GameObject roundOverButton;
     private PlayerManager myPlayerManager;
     private PlayerManager enemyPlayerManager;
+    public SkillButtonGet skillButtonGet;//我方技能
 
     //回合管理类
     private RoundManager roundManager;
@@ -83,6 +84,9 @@ public class HeroAwakeCurved : MonoBehaviour
             //英雄显示
             myPlayerManager.Init();
             enemyPlayerManager.Init();
+
+            //生成技能按钮
+            skillButtonGet.InstantiateSkillButton();
 
             //物体出现在屏幕视野
             Transform t_UI = GameObject.Find("MainUIInit").transform;
@@ -115,6 +119,7 @@ public class HeroAwakeCurved : MonoBehaviour
         myPlayerManager = myUI.GetComponent<PlayerManager>();
         enemyPlayerManager = enemyUI.GetComponent<PlayerManager>();
         roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
+        skillButtonGet = GameObject.Find("MainUI").GetComponent<SkillButtonGet>();
 
         //未选择英雄和觉醒
         meIsReady = false;

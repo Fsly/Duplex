@@ -33,6 +33,7 @@ public class RoundManager : MonoBehaviour
 
     public PlayerManager myPlayer;//我方玩家类
     public PlayerManager EnemyPlayer;//对方玩家类
+    public SkillButtonGet skillButtonGet;//我方技能
 
     private CardCurved cardCurved;
     private EnemyHCurved enemyHCurved;
@@ -87,6 +88,7 @@ public class RoundManager : MonoBehaviour
         cardCurved = GameObject.Find("HandCardPrefab").GetComponent<CardCurved>();
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
         RoundNumText = GameObject.Find("RoundNumText").GetComponent<Text>();
+        skillButtonGet = GameObject.Find("MainUI").GetComponent<SkillButtonGet>();
     }
 
     //准备阶段初始化

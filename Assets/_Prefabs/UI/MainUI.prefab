@@ -1,5 +1,93 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &369955736722639102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 369955736722639073}
+  - component: {fileID: 369955736722639074}
+  m_Layer: 5
+  m_Name: AwakeSkillInit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &369955736722639073
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369955736722639102}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4013415370928889785}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 358.7, y: -224.92001}
+  m_SizeDelta: {x: 151.94, y: 32.92}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &369955736722639074
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369955736722639102}
+  m_CullTransparentMesh: 0
+--- !u!1 &651922145034043667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 651922145034043660}
+  - component: {fileID: 651922145034043663}
+  m_Layer: 5
+  m_Name: HeroSkillInit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &651922145034043660
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651922145034043667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4013415370928889785}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 358.7, y: -182.70001}
+  m_SizeDelta: {x: 151.94, y: 32.92}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &651922145034043663
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651922145034043667}
+  m_CullTransparentMesh: 0
 --- !u!1 &1261848507069801696
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4013415370928889785}
   - component: {fileID: 4013415372708122153}
+  - component: {fileID: 1960958329803983607}
   m_Layer: 5
   m_Name: MainUI
   m_TagString: Untagged
@@ -494,6 +583,8 @@ RectTransform:
   - {fileID: 4013415371145654482}
   - {fileID: 4013415372283479145}
   - {fileID: 1792711368645384712}
+  - {fileID: 651922145034043660}
+  - {fileID: 369955736722639073}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -532,6 +623,28 @@ MonoBehaviour:
   saveAp: 0
   burnDamage: 0
   darkfire: 0
+--- !u!114 &1960958329803983607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013415370928889790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972ad57b1c0d2184392c2564487cf621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t_HeroSkill: {fileID: 651922145034043660}
+  t_AwakeSkill: {fileID: 369955736722639073}
+  activeSkillGO: {fileID: 6546276196541048894, guid: 5a6e6d0044d8f60498c6a8e92b1dcc6c,
+    type: 3}
+  passtiveSkillGO: {fileID: 8269205153825118600, guid: e04f6c4ebb66a014c865bde71425b764,
+    type: 3}
+  cannotSkillGO: {fileID: 8328309933167362342, guid: 3467ac7d3b8ab974498f9c08cb398173,
+    type: 3}
+  awakeSkillGO: {fileID: 3628638911160715371, guid: 65cb69f9dddd9874582333164cf738d3,
+    type: 3}
 --- !u!1 &4013415370965555286
 GameObject:
   m_ObjectHideFlags: 0
