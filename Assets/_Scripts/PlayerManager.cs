@@ -21,6 +21,9 @@ public class PlayerManager : MonoBehaviour
     public int HP; //当前HP
     public int AP; //当前AP
 
+    public int HeroTimer;//英雄技能计数器
+    public int AwakeTimer;//觉醒技能计数器
+
     //UI
     public Text HPText;
     public Slider HPSlider;
@@ -109,6 +112,8 @@ public class PlayerManager : MonoBehaviour
         burnDamage = 0;
         darkfire = false;
         isAwake = false;
+        HeroTimer = 0;
+        AwakeTimer = 0;
     }
 
     //生命变化（数值改变，显示动画）
@@ -225,6 +230,7 @@ public class PlayerManager : MonoBehaviour
         {
             HpChange(-burnDamage);
             cardEffect.TakeBurn(type == PlayerType.player1);
+            burnDamage = 0;
         }
     }
 

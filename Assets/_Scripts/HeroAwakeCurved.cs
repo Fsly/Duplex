@@ -43,8 +43,8 @@ public class HeroAwakeCurved : MonoBehaviour
     public bool youFirst;//我方是否先开
 
     //洗牌后
-    private List<Hero> S_heroes;  //洗牌后英雄牌
-    private List<Awake> S_awakes;  //洗牌后觉醒牌
+    public List<Hero> S_heroes; //洗牌后英雄牌
+    public List<Awake> S_awakes;  //洗牌后觉醒牌
     
     //双方选择
     public Hero myHero;
@@ -176,7 +176,7 @@ public class HeroAwakeCurved : MonoBehaviour
         List<T> newList = new List<T>();
         foreach (T item in ListT)
         {
-            newList.Insert(random.Next(newList.Count), item);
+            newList.Insert(random.Next(newList.Count + 1), item);
         }
         return newList;
     }
