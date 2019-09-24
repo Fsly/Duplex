@@ -91,11 +91,11 @@ public class EnemyShowCard : MonoBehaviour
         //消耗行动点
         if (roundManager.isMyturn)
         {
-            user.ApChange(-attackCard.ActionPoint);
+            user.ApChange(-showCardManager.attackCard.ActionPoint);
         }
         else
         {
-            user.ApChange(-counterCard.ActionPoint);
+            user.ApChange(-showCardManager.counterCard.ActionPoint);
         }
 
         if (roundManager.isMyturn && 
@@ -103,19 +103,49 @@ public class EnemyShowCard : MonoBehaviour
         {
             //打出反击卡
 
+            //共鸣法师技能
+            if (user.hero.No == 3)
+            {
+                if (enemyAttack.damageAttribute == Attribute.Magic)
+                {
+                    SkillManager.printSkill("我方共鸣法师使用技能");
+                    user.HP++;
+                }
+            }
+
             //等待结束
             roundManager.EnemyWaitOK();
             roundManager.WaitPrefabOff();
 
             //判定
-            cardEffect.ActionEffect(enemyAttack, counterCard, true);
+            cardEffect.ActionEffect(enemyAttack, showCardManager.counterCard, true);
         }
         else
         {
             //打出进攻卡
 
+            //水晶剑士技能
+            if (user.hero.No == 2)
+            {
+                if (showCardManager.attackCard.damageAttribute == Attribute.Magic)
+                {
+                    SkillManager.printSkill("对方水晶剑士增加计数器");
+                    user.HeroTimer++;
+                }
+                else if (showCardManager.attackCard.damageAttribute == Attribute.Physical)
+                {
+                    if (user.HeroTimer >= 1)
+                    {
+                        SkillManager.printSkill("对方水晶剑士使用技能");
+                        user.HeroTimer = 0;
+                        showCardManager.attackCard.Damage++;
+                        showCardManager.init();
+                    }
+                }
+            }
+
             //进攻牌先行效果
-            switch (attackCard.attackCardNo)
+            switch (showCardManager.attackCard.attackCardNo)
             {
                 case 2:
                     //上挑
@@ -124,7 +154,7 @@ public class EnemyShowCard : MonoBehaviour
                 case 10:
                     //流星雨
                     delayAttack = true;
-                    showingCard.enemyAttack = attackCard;
+                    showingCard.enemyAttack = showCardManager.attackCard;
                     //额外伤害归零
                     addDamage = 0;
                     break;
@@ -139,20 +169,25 @@ public class EnemyShowCard : MonoBehaviour
     //进攻牌动作
     public void AttackAction()
     {
-        if (attackCard.canCounter && !user.darkfire)
+        if (showCardManager.attackCard.canCounter && !user.darkfire)
         {
             // 如果可以反击并且没有黑炎buff，传值并等待对方反击
             roundManager.WaitingMe();
             roundManager.WaitPrefabOff();
-            showingCard.enemyAttack = attackCard;
+            showingCard.enemyAttack = showCardManager.attackCard;
 
             // 不出牌按钮传值
-            GameObject.Find("NothingButton(Clone)").GetComponent<NotCounter>().enemyAttack = attackCard;
+            GameObject.Find("NothingButton(Clone)").GetComponent<NotCounter>().enemyAttack = showCardManager.attackCard;
         }
         else
         {
+            if (user.darkfire)
+            {
+                showCardManager.damageText.color = Color.red;
+            }
+
             // 不可反击直接判定
-            cardEffect.ActionEffect(attackCard, noCounterCard, false);
+            cardEffect.ActionEffect(showCardManager.attackCard, noCounterCard, false);
         }
     }
 

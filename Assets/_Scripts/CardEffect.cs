@@ -12,9 +12,11 @@ public class CardEffect : MonoBehaviour
     private CardCurved cardCurved;//我方手牌
     private EnemyHCurved enemyHCurved;//对方手牌
 
-    
+    //动画物体
     public List<GameObject> effect_A;
     public List<GameObject> effect_C;
+
+    //动画播放位置
     public Transform enemyHeadPosition;
     public Transform myHeadPosition;
 

@@ -131,7 +131,7 @@ public class PlayerManager : MonoBehaviour
         if (addNum < 0)  // HP降低
         {
             UpBar.transform.localScale = Vector3.zero;             // 隐藏加血层
-            HPSlider.value = ratio;                                // 设置当前血量
+            HPSlider.DOValue(ratio, 0.1f);                         // 设置当前血量
             DownBar.DOValue(ratio, 1.5f);                          // 扣血层缓动缩放到当前血量
         }
         else if (addNum > 0)   // HP增加

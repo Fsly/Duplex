@@ -19,8 +19,8 @@ public class AttackCard : MonoBehaviour
 
     //UI层面
     public Sprite attackSprite; //图片
-    public Sprite attackBallSprite; //行动点球
-    public Sprite damageCubeSprite; //伤害方块
+    public Sprite attackBallSprite;  //行动点球
+    public Sprite damageCubeSprite;  //伤害方块
 
     public AttackCard(AttackCard card)
     {

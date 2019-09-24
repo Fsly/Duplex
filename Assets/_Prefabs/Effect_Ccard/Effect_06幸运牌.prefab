@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9087419857635582743}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -107,14 +107,6 @@ MonoBehaviour:
   - {fileID: 21300030, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
   - {fileID: 21300032, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
   - {fileID: 21300034, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
-  - {fileID: 21300036, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
-  - {fileID: 21300038, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
-  - {fileID: 21300040, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
-  - {fileID: 21300042, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
-  - {fileID: 21300044, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
-  - {fileID: 21300046, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
-  - {fileID: 21300048, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
-  - {fileID: 21300050, guid: 1572ba9bef4ec854691dc1787a42f7a0, type: 3}
   IsPlaying: 0
   Foward: 1
   AutoPlay: 1

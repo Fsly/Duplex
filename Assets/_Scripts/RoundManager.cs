@@ -115,6 +115,12 @@ public class RoundManager : MonoBehaviour
             EnemyPlayer.BurnDamageIn();
             WaitPrefabOn();
         }
+
+        if (myPlayer.hero.No == 1)
+        {
+            SkillManager.printSkill("挑战者恢复计数器");
+            myPlayer.HeroTimer++;
+        }
     }
 
     //抽牌阶段初始化
