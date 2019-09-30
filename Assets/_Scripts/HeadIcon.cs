@@ -17,7 +17,7 @@ public class HeadIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         //鼠标进入显示角色信息
         introduction3Manager.hero = playerManager.hero;
         introduction3Manager.awake = playerManager.awake;
-        if (playerManager.isAwake) introduction3Manager.UpdateForDisplay();
+        if (playerManager.awakeIsOpen) introduction3Manager.UpdateForDisplay();
         else introduction3Manager.UpdateForDisplay2();
         introduction3Manager.DisplayIntroduction();
     }

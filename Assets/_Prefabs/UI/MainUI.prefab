@@ -611,6 +611,8 @@ MonoBehaviour:
   isAwake: 0
   HP: 0
   AP: 0
+  HeroTimer: 0
+  AwakeTimer: 0
   HPText: {fileID: 4013415372283479147}
   HPSlider: {fileID: 4013415371878030585}
   APBar: {fileID: 4013415371145654483}

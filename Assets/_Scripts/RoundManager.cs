@@ -37,6 +37,7 @@ public class RoundManager : MonoBehaviour
 
     private CardCurved cardCurved;
     private EnemyHCurved enemyHCurved;
+    private SkillManager skillManager;
 
     private Vector3 waitFirstSet;
 
@@ -89,6 +90,7 @@ public class RoundManager : MonoBehaviour
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
         RoundNumText = GameObject.Find("RoundNumText").GetComponent<Text>();
         skillButtonGet = GameObject.Find("MainUI").GetComponent<SkillButtonGet>();
+        skillManager = GameObject.Find("SkillManager").GetComponent<SkillManager>();
     }
 
     //准备阶段初始化
@@ -116,10 +118,17 @@ public class RoundManager : MonoBehaviour
             WaitPrefabOn();
         }
 
+        //挑战者技能
         if (myPlayer.hero.No == 1)
         {
-            SkillManager.printSkill("挑战者恢复计数器");
+            SkillManager.printSkill("我方挑战者恢复计数器");
+            
             myPlayer.HeroTimer++;
+        }
+        else if (EnemyPlayer.hero.No == 1)
+        {
+            SkillManager.printSkill("对方挑战者恢复计数器");
+            EnemyPlayer.HeroTimer++;
         }
     }
 
@@ -162,6 +171,25 @@ public class RoundManager : MonoBehaviour
         roundPhase = RoundPhase.Ending;
 
         //发动效果
+        //光之猎手技能发动
+        if (myPlayer.hero.No == 4)
+        {
+            if (myPlayer.HeroTimer > 0)
+            {
+                SkillManager.printSkill("我方光之猎手使用技能");
+                myPlayer.HeroTimer = 0;
+                skillManager.SkillEffect(4, true);
+            }
+        }
+        else if (EnemyPlayer.hero.No == 4)
+        {
+            if (EnemyPlayer.HeroTimer > 0)
+            {
+                SkillManager.printSkill("对方光之猎手使用技能");
+                EnemyPlayer.HeroTimer = 0;
+                skillManager.SkillEffect(4, false);
+            }
+        }
 
         //回合结束动画
         if (isMyturn)

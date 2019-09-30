@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5621951cb21fa504aafa68f34c6af8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hero: {fileID: 1788387673800773541, guid: b791b1ec3fa0866419ff875fe715a01f, type: 3}
+  hero: {fileID: 8903456477509484125, guid: 83e0221656711734cac9b31b16dbaf04, type: 3}
   awake: {fileID: 1294990269325173812, guid: 9735ffaf77dd7534a9a3454869552156, type: 3}
   m_attackCard: {fileID: 6270887093064943878, guid: 2b8c35e55132a8b4ea07b4324ccc2a95,
     type: 3}
@@ -343,6 +343,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4013415372708122153, guid: 0998b6dd45a3b954fadbb291a92afb77,
+        type: 3}
+      propertyPath: enemyPlayer
+      value: 
+      objectReference: {fileID: 957663814}
     - target: {fileID: 4013415370928889785, guid: 0998b6dd45a3b954fadbb291a92afb77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -783,6 +788,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3685824557724140008, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
+        type: 3}
+      propertyPath: enemyPlayer
+      value: 
+      objectReference: {fileID: 358470737}
     - target: {fileID: 3685824558433079972, guid: 66d00d5cfa4b0c74999e543c5b7c7f47,
         type: 3}
       propertyPath: m_AnchorMax.x

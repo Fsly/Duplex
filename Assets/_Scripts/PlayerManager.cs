@@ -15,14 +15,14 @@ public class PlayerManager : MonoBehaviour
     public Hero hero; //选用的英雄
     public Awake awake;//选用的觉醒
 
-    //是否开启过觉醒
-    public bool isAwake; 
-
     public int HP; //当前HP
     public int AP; //当前AP
 
     public int HeroTimer;//英雄技能计数器
     public int AwakeTimer;//觉醒技能计数器
+
+    public bool awakeIsOpen;//觉醒已使用
+    public bool awakeCanOpen;//觉醒条件已满足
 
     //UI
     public Text HPText;
@@ -74,11 +74,11 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            HpChange(-1);
+            HpChange(-1,2);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            HpChange(1);
+            HpChange(1,2);
         }
     }
 
@@ -111,14 +111,36 @@ public class PlayerManager : MonoBehaviour
         saveAp = 0;
         burnDamage = 0;
         darkfire = false;
-        isAwake = false;
+        awakeIsOpen = false;
         HeroTimer = 0;
         AwakeTimer = 0;
     }
 
     //生命变化（数值改变，显示动画）
-    public void HpChange(int addNum)
+    //伤害来源：0.无来源，1.自己，2.对方
+    public void HpChange(int addNum, int sourceOfDamage = 0)
     {
+        //对方光之猎手技能
+        if (enemyPlayer.hero.No == 4)
+        {
+            //对对方造成伤害
+            if (sourceOfDamage == 2 && addNum < 0)
+            {
+                //在该玩家方回合
+                if (roundManager.isMyturn != (type == PlayerType.player1))
+                {
+                    SkillManager.printSkill("光之猎手增加计数器");
+                    enemyPlayer.HeroTimer++;
+                }
+            }
+        }
+
+        //死神状态改变
+        if (awake.No == 1)
+        {
+
+        }
+
         //数值改变
         HP += addNum;
 
@@ -228,7 +250,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (burnDamage != 0)
         {
-            HpChange(-burnDamage);
+            HpChange(-burnDamage,2);
             cardEffect.TakeBurn(type == PlayerType.player1);
             burnDamage = 0;
         }

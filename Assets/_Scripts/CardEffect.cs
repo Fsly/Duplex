@@ -107,7 +107,7 @@ public class CardEffect : MonoBehaviour
                 break;
             case 5:
                 //恢复魔法
-                user.HpChange(3);
+                user.HpChange(3, 0);
                 break;
             case 7:
                 //正义审判
@@ -217,10 +217,10 @@ public class CardEffect : MonoBehaviour
             effect_cCard = cCard.counterCardNo;
             effect_isMyAction = isMyAction;
         }
-        
 
-        user.HpChange(-backDamage);
-        opposite.HpChange(-damage);
+
+        user.HpChange(-backDamage, 2);
+        opposite.HpChange(-damage, 2);
     }
 
     //播放特效

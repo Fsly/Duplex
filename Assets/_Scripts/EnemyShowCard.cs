@@ -108,7 +108,7 @@ public class EnemyShowCard : MonoBehaviour
             {
                 if (enemyAttack.damageAttribute == Attribute.Magic)
                 {
-                    SkillManager.printSkill("我方共鸣法师使用技能");
+                    SkillManager.printSkill("对方共鸣法师使用技能");
                     user.HP++;
                 }
             }

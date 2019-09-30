@@ -60,7 +60,7 @@ public class SkillButtonGet : MonoBehaviour
                 roundManager.roundPhase == RoundPhase.Main &&
                 roundManager.isMyturn)
                 {
-                    SkillManager.printSkill("挑战者使用技能");
+                    SkillManager.printSkill("我方挑战者使用技能");
                     playerManager.HeroTimer = 0;
                     skillManager.SkillEffect(1, true);
                 }
