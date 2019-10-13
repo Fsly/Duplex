@@ -26,6 +26,60 @@ public class EnemySay : MonoBehaviour
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
     }
 
+    public void dubug1()
+    {
+        //对方准备好
+        heroAwakeCurved.EnemyReady(hero, awake);
+        //我方先开
+        heroAwakeCurved.decideWhoFrist = true;
+        heroAwakeCurved.youFirst = true;
+    }
+
+    public void debug2()
+    {
+        //对方准备阶段抽牌
+        if (roundManager.roundPhase == RoundPhase.Draw && !roundManager.isMyturn)
+        {
+            enemyHCurved.HCNumChange(2);
+            roundManager.MainRoundStart();
+        }
+    }
+    public void debug3()
+    {
+        //对方手牌全部赋值为指定牌
+        for (int i = 0; i < enemyHCurved.ListHandCard.Count; i++)
+        {
+            enemyHCurved.ListHandCard[i].GetComponent<EnemyCardManager>().attackCard = new AttackCard(m_attackCard);
+            enemyHCurved.ListHandCard[i].GetComponent<EnemyCardManager>().counterCard = new CounterCard(m_counterCard);
+        }
+        //对方打出第一张手牌
+        if ((roundManager.waitCounter == WaitPhase.WaitEnemy) ||
+            (roundManager.roundPhase == RoundPhase.Main &&
+            !roundManager.isMyturn &&
+            roundManager.waitCounter != WaitPhase.WaitMe))
+        {
+            enemyHCurved.ListHandCard[0].GetComponent<EnemyCardManager>().UseCard();
+        }
+    }
+    public void debug4()
+    {
+        //对方进入弃牌阶段
+        if (roundManager.roundPhase == RoundPhase.Main && !roundManager.isMyturn)
+        {
+            roundManager.AbandonmentRoundStart();
+        }
+    }
+
+    public void debug5()
+    {
+        //对方弃第一张手牌
+        enemyHCurved.ListHandCard[0].GetComponent<EnemyCardManager>().DestroyCard();
+    }
+
+    public void debug6()
+    {
+        Application.Quit();
+    }
     // Update is called once per frame
     void Update()
     {
