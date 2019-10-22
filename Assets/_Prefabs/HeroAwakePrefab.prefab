@@ -567,10 +567,13 @@ MonoBehaviour:
   meIsReady: 0
   decideWhoFrist: 0
   youFirst: 0
+  S_heroes: []
+  S_awakes: []
   myHero: {fileID: 0}
   myAwake: {fileID: 0}
   enemyHero: {fileID: 0}
   enemyAwake: {fileID: 0}
+  skillButtonGet: {fileID: 0}
 --- !u!1 &8680343497289993769
 GameObject:
   m_ObjectHideFlags: 0

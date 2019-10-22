@@ -8,6 +8,11 @@ public class EnemySay : MonoBehaviour
     private RoundManager roundManager;
     private HeroAwakeCurved heroAwakeCurved;
     private EnemyHCurved enemyHCurved;
+    private CardEffect cardEffect;
+    private EnemyShowCard showingCard;
+
+    public CounterCard noCounterCard;//不打出反击牌
+    public AttackCard enemyAttack;//对方进攻牌
 
     //敌方选择
     public Hero hero;
@@ -24,6 +29,8 @@ public class EnemySay : MonoBehaviour
         roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
         heroAwakeCurved = GameObject.Find("HeroAwakePrefab").GetComponent<HeroAwakeCurved>();
         enemyHCurved = GameObject.Find("EnemyHCPrefab").GetComponent<EnemyHCurved>();
+        cardEffect = GameObject.Find("AllCardEffect").GetComponent<CardEffect>();
+        showingCard = GameObject.Find("EnemyShowCardParent").GetComponent<EnemyShowCard>();
     }
 
     public void dubug1()
@@ -61,6 +68,17 @@ public class EnemySay : MonoBehaviour
             enemyHCurved.ListHandCard[0].GetComponent<EnemyCardManager>().UseCard();
         }
     }
+
+    public void debug3_5()
+    {
+        //对方不出反击
+        if (roundManager.waitCounter == WaitPhase.WaitEnemy)
+        {
+            cardEffect.ActionEffect(showingCard.enemyAttack, noCounterCard, true);
+            roundManager.EnemyWaitOK();
+        }
+    }
+
     public void debug4()
     {
         //对方进入弃牌阶段

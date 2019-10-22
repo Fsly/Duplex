@@ -107,6 +107,14 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             //使用牌
 
+            //删除之前按钮
+            Destroy(GameObject.Find("AttackButton(Clone)"));
+            Destroy(GameObject.Find("CounterButton(Clone)"));
+
+            //根据分辨率计算位置
+            float local_x = Input.mousePosition.x / (float)Screen.width * 1280f;
+            float local_y = Input.mousePosition.y / (float)Screen.height * 720f;
+
             //根据情况生成按钮
             GameObject GOCardButton = null;
             if (roundManager.roundPhase == RoundPhase.Main
@@ -115,7 +123,7 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             {
                 //我方回合进攻
                 GOCardButton = Instantiate(attackButton) as GameObject;
-                GOCardButton.transform.position = Input.mousePosition;
+                GOCardButton.transform.position = new Vector3(local_x, local_y, 0);
                 GOCardButton.transform.parent = transform;
                 GOCardButton.GetComponent<ActionButton>().cardManager = this;
             }
@@ -123,7 +131,7 @@ public class CardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             {
                 //对方回合反击
                 GOCardButton = Instantiate(counterButton) as GameObject;
-                GOCardButton.transform.position = Input.mousePosition;
+                GOCardButton.transform.position = new Vector3(local_x, local_y, 0);
                 GOCardButton.transform.parent = transform;
                 GOCardButton.GetComponent<ActionButton>().cardManager = this;
             }

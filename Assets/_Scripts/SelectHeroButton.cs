@@ -30,6 +30,10 @@ public class SelectHeroButton : MonoBehaviour
 
     public void ButtonInstantiate()
     {
+        //删除之前按钮
+        Destroy(GameObject.Find("SelectButton(Clone)"));
+        Destroy(GameObject.Find("SelectButton2(Clone)"));
+
         //点击卡牌根据情况生成按钮
         GameObject GOCardButton = null;
         if (cardButton == HandCardButton.Hero)
@@ -42,7 +46,10 @@ public class SelectHeroButton : MonoBehaviour
         }
         if (cardButton != HandCardButton.Cannot)
         {
-            GOCardButton.transform.position = Input.mousePosition;
+            float local_x = Input.mousePosition.x / (float)Screen.width * 1280f;
+            float local_y = Input.mousePosition.y / (float)Screen.height * 720f;
+            print(1);
+            GOCardButton.transform.position = new Vector3(local_x, local_y, 0);
             GOCardButton.transform.parent = transform;
             GOCardButton.GetComponent<ActionButton>().selectHeroButton = this;
         }
